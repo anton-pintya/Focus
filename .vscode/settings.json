@@ -69,7 +69,8 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "codecvt": "cpp"
     },
     "terminal.integrated.env.linux": {
         "GTK_PATH": ""

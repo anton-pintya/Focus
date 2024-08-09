@@ -1,0 +1,8 @@
+%YAML 1.2
+---
+
+
+current:
+  # Dataset name from the DATASETS list
+  path: "datasets/custom"
+  video: "long.mp4"

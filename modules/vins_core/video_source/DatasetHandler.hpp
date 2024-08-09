@@ -4,11 +4,16 @@
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include "VideoSource.hpp"
 
 
 namespace vins_core
 {
 
+    /**
+     * @brief Perform a basic package for monocular visual odometry dataset
+     * 
+     */
     struct DataPackage {
         float timestamp;                // <- time for given image
         cv::Vec<double, 3> coordinates; // <- vector = (x, y, z) in camera-frame
@@ -20,7 +25,7 @@ namespace vins_core
      * @brief Base class for handling datasets
      * 
      */ 
-    class DatasetHandler
+    class DatasetHandler : public VideoSource
     {
         public:
             /*********Public fields*********/
@@ -30,7 +35,7 @@ namespace vins_core
             cv::Mat calibration;                // <- Instrict params (3x3) for given camera (dataset)
             cv::Mat poses;                      // <- Ground-truth poses (now supports only KITTI structure)
 
-            std::string data_source{"dataset"}; // <- Source of data (dataset | video | camera)
+            std::string dataset{""};            // <- Used dataset name
             int fps{30};                        // <- FPS value for given source
 
             /*********Public methods*********/
@@ -60,9 +65,18 @@ namespace vins_core
              */
             DataPackage operator[](int index);
 
+            
+            /**
+             * @brief Convert given camera FPS to millisecond for cv::waitkey(delay_ms)
+             * 
+             * @return int - delay in milliseconds 
+             */
+            int fps_to_ms() { return (int)(1e3 / fps); }
 
-            int fps2ms() { return (int)(1e3 / fps); }
-
+            /**
+             * @brief Print out in the terminal info about current dataset (or source) used
+             * 
+             */
             void print_info();
 
         protected:

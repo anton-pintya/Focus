@@ -8,12 +8,10 @@
 #include <vector>
 // #include <string>
 
-
 namespace vins_utils
 {
-    
-    void VINS_INFO(const char* format, ...) {
-        const char* prefix = "INFO: ";
+    static void PRINT(const char* prefix, const char* format, ...)
+    {
         std::vector<char> buffer(1024);
 
         va_list args;
@@ -29,6 +27,29 @@ namespace vins_utils
 
         std::copy(prefix, prefix + std::strlen(prefix), buffer.data());
         std::printf("%s\n", buffer.data());
+    }
+        
+    inline void VINS_INFO(const char* format, ...) {
+        va_list args;
+        va_start(args, format);
+
+        PRINT("\033[0;34mINFO: \033[0m", format, args);
+    }
+
+
+    inline void VINS_DEBUG(const char* format, ...) {
+        va_list args;
+        va_start(args, format);
+
+        PRINT("\033[0;33mDEBUG: \033[0m", format, args);
+    }
+
+
+    inline void VINS_ERROR(const char* format, ...) {
+        va_list args;
+        va_start(args, format);
+
+        PRINT("\033[0;31mERROR: \033[0m", format, args);
     }
 } // namespace vins_utils
 

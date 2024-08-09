@@ -123,6 +123,32 @@ VINS-Focus/fast:
 	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/build
 .PHONY : VINS-Focus/fast
 
+#=============================================================================
+# Target rules for targets named vins_core
+
+# Build rule for target.
+vins_core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vins_core
+.PHONY : vins_core
+
+# fast build rule for target.
+vins_core/fast:
+	$(MAKE) -f build/vins_core/CMakeFiles/vins_core.dir/build.make build/vins_core/CMakeFiles/vins_core.dir/build
+.PHONY : vins_core/fast
+
+#=============================================================================
+# Target rules for targets named vins_utils
+
+# Build rule for target.
+vins_utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vins_utils
+.PHONY : vins_utils
+
+# fast build rule for target.
+vins_utils/fast:
+	$(MAKE) -f build/vins_utils/CMakeFiles/vins_utils.dir/build.make build/vins_utils/CMakeFiles/vins_utils.dir/build
+.PHONY : vins_utils/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -150,60 +176,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-modules/vins_core/dataset_handler/DatasetHandler.o: modules/vins_core/dataset_handler/DatasetHandler.cpp.o
-
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.o
-
-# target to build an object file
-modules/vins_core/dataset_handler/DatasetHandler.cpp.o:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/dataset_handler/DatasetHandler.cpp.o
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.cpp.o
-
-modules/vins_core/dataset_handler/DatasetHandler.i: modules/vins_core/dataset_handler/DatasetHandler.cpp.i
-
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.i
-
-# target to preprocess a source file
-modules/vins_core/dataset_handler/DatasetHandler.cpp.i:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/dataset_handler/DatasetHandler.cpp.i
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.cpp.i
-
-modules/vins_core/dataset_handler/DatasetHandler.s: modules/vins_core/dataset_handler/DatasetHandler.cpp.s
-
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.s
-
-# target to generate assembly for a file
-modules/vins_core/dataset_handler/DatasetHandler.cpp.s:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/dataset_handler/DatasetHandler.cpp.s
-.PHONY : modules/vins_core/dataset_handler/DatasetHandler.cpp.s
-
-modules/vins_core/param_handler/ParamHandler.o: modules/vins_core/param_handler/ParamHandler.cpp.o
-
-.PHONY : modules/vins_core/param_handler/ParamHandler.o
-
-# target to build an object file
-modules/vins_core/param_handler/ParamHandler.cpp.o:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/param_handler/ParamHandler.cpp.o
-.PHONY : modules/vins_core/param_handler/ParamHandler.cpp.o
-
-modules/vins_core/param_handler/ParamHandler.i: modules/vins_core/param_handler/ParamHandler.cpp.i
-
-.PHONY : modules/vins_core/param_handler/ParamHandler.i
-
-# target to preprocess a source file
-modules/vins_core/param_handler/ParamHandler.cpp.i:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/param_handler/ParamHandler.cpp.i
-.PHONY : modules/vins_core/param_handler/ParamHandler.cpp.i
-
-modules/vins_core/param_handler/ParamHandler.s: modules/vins_core/param_handler/ParamHandler.cpp.s
-
-.PHONY : modules/vins_core/param_handler/ParamHandler.s
-
-# target to generate assembly for a file
-modules/vins_core/param_handler/ParamHandler.cpp.s:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/param_handler/ParamHandler.cpp.s
-.PHONY : modules/vins_core/param_handler/ParamHandler.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +185,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... VINS-Focus"
+	@echo "... vins_core"
+	@echo "... vins_utils"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... modules/vins_core/dataset_handler/DatasetHandler.o"
-	@echo "... modules/vins_core/dataset_handler/DatasetHandler.i"
-	@echo "... modules/vins_core/dataset_handler/DatasetHandler.s"
-	@echo "... modules/vins_core/param_handler/ParamHandler.o"
-	@echo "... modules/vins_core/param_handler/ParamHandler.i"
-	@echo "... modules/vins_core/param_handler/ParamHandler.s"
 .PHONY : help
 
 

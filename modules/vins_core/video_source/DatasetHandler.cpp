@@ -5,47 +5,38 @@
 
 // #include "../../vins_utils/print_info.hpp"
 
-using namespace vins_core;
+#include "vins_utils/print_info.hpp"
 
+using namespace vins_core;
+using namespace vins_utils;
 
 DatasetHandler::DatasetHandler(std::string config_path)
 {
     cv::FileStorage fs(config_path, cv::FileStorage::READ);
 
     if (!fs.isOpened()) {
-        std::cerr << "Unable to open file " << config_path << std::endl;
+        VINS_ERROR("Unable to open dataset config file: %s", config_path);
         return;
     }
 
-    fs["current"]["source"] >> data_source;
+    std::string dataset;
+    std::string seq;
+    fs["current"]["dataset"] >> dataset;
+    fs["current"]["sequence"] >> seq;
 
-    if (data_source == "dataset") 
-    {
-        std::string dataset;
-        std::string seq;
-        fs["current"]["dataset"] >> dataset;
-        fs["current"]["sequence"] >> seq;
+    VINS_DEBUG("%s", dataset);
 
-        std::string image_path = "./datasets/" + dataset + "/sequences/" + seq + "/";
-        std::string poses_path = "./datasets/" + dataset + "/poses/" + seq + ".txt";
-        std::string calib_path = "./datasets/" + dataset + "/calibration/" + seq + ".yaml";
-        std::string times_path = "./datasets/" + dataset + "/times/" + seq + ".txt";
+    std::string image_path = "datasets/" + dataset + "/sequences/" + seq + "/";
+    std::string poses_path = "datasets/" + dataset + "/poses/" + seq + ".txt";
+    std::string calib_path = "datasets/" + dataset + "/calibration/" + seq + ".yaml";
+    std::string times_path = "datasets/" + dataset + "/times/" + seq + ".txt";
 
-        _load_images(image_path);
-        _load_times(times_path);
-        _load_poses(poses_path);
-        _load_calibration(calib_path);
+    _load_images(image_path);
+    _load_times(times_path);
+    _load_poses(poses_path);
+    _load_calibration(calib_path);
 
-        fs["datasets"][dataset]["fps"] >> fps;
-    } 
-    else if (data_source == "video") 
-    {
-
-    } 
-    else if (data_source == "camera")
-    {
-
-    }
+    fs["datasets"][dataset]["fps"] >> fps;
     
     fs.release();
 }
@@ -83,23 +74,10 @@ DataPackage DatasetHandler::operator[](int index)
 
 void DatasetHandler::print_info()
 {
-    if (data_source == "dataset") {
-
-        std::cout << "DATASET" << std::endl;
-        std::cout << "Image number: " << images.size() << std::endl;
-        std::cout << "Timings number: " << times.size() << std::endl;
-        std::cout << "Ground-truth poses number: " << poses.size() << std::endl;
-        std::cout << "Instric params" << std::endl << calibration << std::endl;
-
-    } else if (data_source == "video") {
-
-        std::cout << "video" << std::endl;
-
-    } else if (data_source == "camera") {
-
-        std::cout << "camera" << std::endl;
-
-    }
+    std::cout << "Image number: " << images.size() << std::endl;
+    std::cout << "Timings number: " << times.size() << std::endl;
+    std::cout << "Ground-truth poses number: " << poses.size() << std::endl;
+    std::cout << "Instric params" << std::endl << calibration << std::endl;
 
     return;
 }
