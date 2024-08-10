@@ -11,17 +11,23 @@ namespace vins_core
     {
         public:
             /*********Public fields*********/
-            std::vector<std::string> images;    // <- 
+            cv::VideoCapture video;             // <-
             std::vector<float> times;           // <- 
             cv::Mat calibration;                // <- 
             cv::Mat poses;                      // <- 
 
             std::string video_folder{""};
             std::string video_file{""};         // <- 
-            int fps{30};
 
             /*********Public methods*********/
             VideoHandler(std::string configs_path); 
+
+            /**
+             * @brief Return DataPackage for given video source with available data for it
+             * 
+             * @return DataPackageBase 
+             */
+            DataPackageBase read() override;
 
 
         protected:

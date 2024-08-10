@@ -20,5 +20,15 @@ VideoHandler::VideoHandler(const std::string config_path)
 
     printf("%s\n", path_to_video.c_str());
 
-    
+    video.open(path_to_video);
+}
+
+
+DataPackageBase VideoHandler::read()
+{
+    VideoPackage package;
+    video >> package.img;
+    package.timestamp = 1000; // <- change to chrono::current_time (or smth like this)
+
+    return package;
 }

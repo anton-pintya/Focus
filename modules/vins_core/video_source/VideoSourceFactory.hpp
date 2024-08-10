@@ -34,13 +34,13 @@ namespace vins_core
 
                 fs["current"]["source"] >> video_source;
 
-                char dirname[101];
-                struct dirent* dir = NULL;
-                getcwd(dirname,sizeof(dirname)); //Get the current directory
-                printf("%s\n",dirname);
+                // char dirname[101];
+                // struct dirent* dir = NULL;
+                // getcwd(dirname,sizeof(dirname)); //Get the current directory
+                // printf("%s\n",dirname);
 
                 // VINS_DEBUG("%s", video_source.c_str());
-                printf("video source: %s\n", video_source.c_str());
+                // printf("video source: %s\n", video_source.c_str());
 
                 if (video_source == "dataset") {
                     return std::unique_ptr<VideoSource>(new DatasetHandler("./modules/vins_core/video_source/dataset_config.yaml"));

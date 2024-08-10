@@ -24,7 +24,7 @@ DatasetHandler::DatasetHandler(std::string config_path)
     fs["current"]["dataset"] >> dataset;
     fs["current"]["sequence"] >> seq;
 
-    VINS_DEBUG("%s", dataset);
+    VINS_DEBUG("%s", dataset.c_str());
 
     std::string image_path = "datasets/" + dataset + "/sequences/" + seq + "/";
     std::string poses_path = "datasets/" + dataset + "/poses/" + seq + ".txt";
@@ -42,7 +42,16 @@ DatasetHandler::DatasetHandler(std::string config_path)
 }
 
 
-DataPackage DatasetHandler::get_pack(int index)
+DataPackageBase DatasetHandler::read()
+{
+    static int counter = 0;
+    DatasetPackage package = get_pack(counter);
+    counter++;
+    return package;
+}
+
+
+DatasetPackage DatasetHandler::get_pack(int index)
 {
     cv::Mat R = (
         cv::Mat_<double>(3, 3) <<
@@ -51,23 +60,26 @@ DataPackage DatasetHandler::get_pack(int index)
         poses.at<double>(index, 8), poses.at<double>(index, 9), poses.at<double>(index, 10)
     );
 
-    DataPackage package = {
-        .timestamp = times.at(index),
-        .coordinates = cv::Vec<double, 3>(
-            poses.at<double>(index, 3),
-            poses.at<double>(index, 7),
-            poses.at<double>(index, 11)
-        ),
-        .rotation = R,
-        .img = cv::imread(images.at(index))
-    };
+    DatasetPackage package;
+
+    package.timestamp = times.at(index);
+
+    package.coordinates = cv::Vec<double, 3>(
+        poses.at<double>(index, 3),
+        poses.at<double>(index, 7),
+        poses.at<double>(index, 11)
+    );
+
+    package.rotation = R;
+
+    package.img = cv::imread(images.at(index));
     
     return package;
 }
 
-DataPackage DatasetHandler::operator[](int index)
+DatasetPackage DatasetHandler::operator[](int index)
 {
-    DataPackage pkg = get_pack(index);
+    DatasetPackage pkg = get_pack(index);
     return pkg;
 }
 
@@ -160,6 +172,8 @@ void DatasetHandler::_load_poses(std::string path)
         std::cerr << "Unable to open file " << path << std::endl;
         return;
     }
+
+    has_gt = true;
 
     int lines = std::count(
         std::istreambuf_iterator<char>(poses_file), 

@@ -9,16 +9,31 @@ namespace vins_core
     class CameraHandler : public VideoSource
     {
         public:
-            CameraHandler(std::string configs_path)
-            {
-                
-            }
+            /*********Public fields*********/
+
+
+            /*********Public methods*********/
+            CameraHandler(std::string configs_path);
+
+            /**
+             * @brief Return DataPackage for given video source with available data for it
+             * 
+             * @return DataPackageBase 
+             */
+            DataPackageBase read() override;
 
         protected:
+            /*********Protected fields*********/
+
+
+            /*********Protected methods*********/
 
 
         private:
+            /*********Private fields*********/
 
+
+            /*********Private methods*********/
 
     };
 }

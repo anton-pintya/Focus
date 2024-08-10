@@ -10,16 +10,16 @@
 namespace vins_core
 {
 
-    /**
-     * @brief Perform a basic package for monocular visual odometry dataset
-     * 
-     */
-    struct DataPackage {
-        float timestamp;                // <- time for given image
-        cv::Vec<double, 3> coordinates; // <- vector = (x, y, z) in camera-frame
-        cv::Mat rotation;               // <- temporary solution
-        cv::Mat img;                    // <- image from dataset
-    };
+    // /**
+    //  * @brief Perform a basic package for monocular visual odometry dataset
+    //  * 
+    //  */
+    // struct DataPackage {
+    //     float timestamp;                // <- time for given image
+    //     cv::Vec<double, 3> coordinates; // <- vector = (x, y, z) in camera-frame
+    //     cv::Mat rotation;               // <- temporary solution
+    //     cv::Mat img;                    // <- image from dataset
+    // };
 
     /**
      * @brief Base class for handling datasets
@@ -36,7 +36,6 @@ namespace vins_core
             cv::Mat poses;                      // <- Ground-truth poses (now supports only KITTI structure)
 
             std::string dataset{""};            // <- Used dataset name
-            int fps{30};                        // <- FPS value for given source
 
             /*********Public methods*********/
 
@@ -47,13 +46,22 @@ namespace vins_core
              */
             DatasetHandler(std::string configs_path);
 
+
+            /**
+             * @brief Return DataPackage for given video source with available data for it
+             * 
+             * @return DataPackageBase 
+             */
+            DataPackageBase read() override;
+
+
             /**
              * @brief Get the packed object for dataset's item
              * 
              * @param index - index of the dataset's item (img, timestamp, pose)
              * @return DataPackage 
              */
-            DataPackage get_pack(int index);
+            DatasetPackage get_pack(int index);
 
             /**
              * @brief Overriden operator[] for getting access to dataset_item[i]
@@ -63,21 +71,13 @@ namespace vins_core
              * @param index - index of the dataset's item (img, timestamp, pose)
              * @return DataPackage 
              */
-            DataPackage operator[](int index);
-
-            
-            /**
-             * @brief Convert given camera FPS to millisecond for cv::waitkey(delay_ms)
-             * 
-             * @return int - delay in milliseconds 
-             */
-            int fps_to_ms() { return (int)(1e3 / fps); }
+            DatasetPackage operator[](int index);
 
             /**
              * @brief Print out in the terminal info about current dataset (or source) used
              * 
              */
-            void print_info();
+            void print_info() override;
 
         protected:
             /*********Protected fields*********/
