@@ -23,6 +23,9 @@ DatasetHandler::DatasetHandler(std::string config_path)
     std::string seq;
     fs["current"]["dataset"] >> dataset;
     fs["current"]["sequence"] >> seq;
+    fs["datasets"][dataset]["fps"] >> fps;
+    
+    fs.release();
 
     VINS_DEBUG("%s", dataset.c_str());
 
@@ -35,10 +38,6 @@ DatasetHandler::DatasetHandler(std::string config_path)
     _load_times(times_path);
     _load_poses(poses_path);
     _load_calibration(calib_path);
-
-    fs["datasets"][dataset]["fps"] >> fps;
-    
-    fs.release();
 }
 
 
@@ -86,11 +85,11 @@ DatasetPackage DatasetHandler::operator[](int index)
 
 void DatasetHandler::print_info()
 {
+    VideoSource::print_info();
+
     std::cout << "Image number: " << images.size() << std::endl;
     std::cout << "Timings number: " << times.size() << std::endl;
-    std::cout << "Ground-truth poses number: " << poses.size() << std::endl;
-    std::cout << "Instric params" << std::endl << calibration << std::endl;
-
+    
     return;
 }
 
@@ -103,7 +102,7 @@ void DatasetHandler::_load_images(std::string path)
     DIR* dir = opendir(path.c_str());
 
     if (dir == nullptr) {
-        std::cerr << "Unable to open directory " << path << std::endl;
+        VINS_ERROR("Unable to open directory %s", path);
         return;
     }
 
@@ -123,28 +122,12 @@ void DatasetHandler::_load_images(std::string path)
 }
 
 
-void DatasetHandler::_load_calibration(std::string path)
-{
-    cv::FileStorage calib_file(path, cv::FileStorage::READ);
-
-    if (!calib_file.isOpened()) {
-        std::cerr << "Unable to open file " << path << std::endl;
-        return;
-    }
-
-    calib_file["instrict"] >> calibration;
-
-    calib_file.release();
-    return;
-}
-
-
 void DatasetHandler::_load_times(std::string path)
 {
     std::ifstream times_file(path);
 
     if (!times_file.is_open()) {
-        std::cerr << "Unable to open file " << path << std::endl;
+        VINS_ERROR("Unable to open file %s", path);
         return;
     }
 
@@ -155,7 +138,7 @@ void DatasetHandler::_load_times(std::string path)
         if (iss >> value) {
             times.push_back(value);
         } else {
-            std::cerr << "Error while reading line " << line << std::endl; 
+            VINS_ERROR("Error while reading line: %s", line); 
         }
     }
 
@@ -163,43 +146,3 @@ void DatasetHandler::_load_times(std::string path)
     return;
 }
 
-
-void DatasetHandler::_load_poses(std::string path)
-{
-    std::ifstream poses_file(path);
-
-    if (!poses_file.is_open()) {
-        std::cerr << "Unable to open file " << path << std::endl;
-        return;
-    }
-
-    has_gt = true;
-
-    int lines = std::count(
-        std::istreambuf_iterator<char>(poses_file), 
-        std::istreambuf_iterator<char>(), '\n'
-    );
-
-    poses_file.close();
-    poses_file.open(path);
-
-    poses = cv::Mat::zeros(lines, 12, CV_64F);
-
-    std::string line;
-
-    for (int i = 0; i < lines; i++) {
-        std::getline(poses_file, line);
-        std::istringstream iss(line);
-
-        double value;
-        
-        for (int j = 0; j < 12; j++)
-        {
-            iss >> value;
-            poses.at<double>(i, j) = value;
-        }
-    }
-
-    poses_file.close();
-    return;
-}

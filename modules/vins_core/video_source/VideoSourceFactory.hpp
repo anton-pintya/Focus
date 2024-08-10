@@ -30,6 +30,7 @@ namespace vins_core
                     return nullptr;
                 }
 
+
                 std::string video_source;
 
                 fs["current"]["source"] >> video_source;

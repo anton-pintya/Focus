@@ -10,17 +10,6 @@
 namespace vins_core
 {
 
-    // /**
-    //  * @brief Perform a basic package for monocular visual odometry dataset
-    //  * 
-    //  */
-    // struct DataPackage {
-    //     float timestamp;                // <- time for given image
-    //     cv::Vec<double, 3> coordinates; // <- vector = (x, y, z) in camera-frame
-    //     cv::Mat rotation;               // <- temporary solution
-    //     cv::Mat img;                    // <- image from dataset
-    // };
-
     /**
      * @brief Base class for handling datasets
      * 
@@ -32,8 +21,6 @@ namespace vins_core
 
             std::vector<std::string> images;    // <- Vector of sorted image filenames
             std::vector<float> times;           // <- Vector of "timestamps" for *.txt file
-            cv::Mat calibration;                // <- Instrict params (3x3) for given camera (dataset)
-            cv::Mat poses;                      // <- Ground-truth poses (now supports only KITTI structure)
 
             std::string dataset{""};            // <- Used dataset name
 
@@ -105,7 +92,7 @@ namespace vins_core
              * 
              * @param path - path to the dataset's calibration file (sequence.yaml)
              */
-            void _load_calibration(std::string path);
+            // void _load_calibration(std::string path);
 
 
             /**
@@ -120,7 +107,7 @@ namespace vins_core
              * 
              * @param path  - path to dataset's gt-poses file (sequence.txt)
              */
-            void _load_poses(std::string path);
+            // void _load_poses(std::string path);
 
     };
 

@@ -12,8 +12,10 @@ namespace vins_core
         public:
             /*********Public fields*********/
 
+            
 
             /*********Public methods*********/
+
             virtual ~VideoSource() = default;
             
             /**
@@ -37,7 +39,7 @@ namespace vins_core
              * @brief Print out in the terminal info about current dataset (or source) used
              * 
              */
-            virtual void print_info() { }
+            virtual void print_info();
 
 
             /**
@@ -49,18 +51,38 @@ namespace vins_core
 
         protected:
             /*********Protected fields*********/
+
+            cv::Mat calibration;    // <- Instrict params (3x3) for given camera (dataset)
+            cv::Mat poses;          // <- Ground-truth poses (now supports only KITTI structure)
+
             bool    has_gt{false};  // <- is ground-truth data available
             int     fps{30};        // <- FPS value for given source
 
             /*********Protected methods*********/
 
+            /**
+             * @brief Load calibration matrix for given dataset's sequence
+             * 
+             * @param path - path to the dataset's calibration file (sequence.yaml)
+             */
+            void _load_calibration(std::string path);
+
+
+            /**
+             * @brief Load ground-truth poses for given dataset's sequence
+             * 
+             * @param path  - path to dataset's gt-poses file (sequence.txt)
+             */
+            void _load_poses(std::string path);
 
         private:
             /*********Private fields*********/
 
+            
 
             /*********Private methods*********/
 
+            
 
     };
 }

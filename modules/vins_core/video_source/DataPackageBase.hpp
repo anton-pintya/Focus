@@ -6,13 +6,17 @@
 
 namespace vins_core
 {
+    /**
+     * @brief Perform a basic package for monocular visual odometry dataset
+     * 
+     */
     struct DataPackageBase
     {
         float timestamp{0};             // <- time for given image
         cv::Mat img;                    // <- image from dataset
     };
 
-
+    
     struct DatasetPackage: public DataPackageBase
     {
         cv::Vec<double, 3> coordinates; // <- vector = (x, y, z) in camera-frame

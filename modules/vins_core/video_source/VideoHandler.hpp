@@ -12,9 +12,6 @@ namespace vins_core
         public:
             /*********Public fields*********/
             cv::VideoCapture video;             // <-
-            std::vector<float> times;           // <- 
-            cv::Mat calibration;                // <- 
-            cv::Mat poses;                      // <- 
 
             std::string video_folder{""};
             std::string video_file{""};         // <- 
@@ -28,6 +25,13 @@ namespace vins_core
              * @return DataPackageBase 
              */
             DataPackageBase read() override;
+
+
+            /**
+             * @brief Print out in the terminal info about current video
+             * 
+             */
+            void print_info() override;
 
 
         protected:

@@ -6,7 +6,6 @@
 #include <cstdarg>
 #include <cstdio>
 #include <vector>
-// #include <string>
 
 namespace vins_utils
 {
@@ -28,29 +27,11 @@ namespace vins_utils
         std::copy(prefix, prefix + std::strlen(prefix), buffer.data());
         std::printf("%s\n", buffer.data());
     }
-        
-    inline void VINS_INFO(const char* format, ...) {
-        va_list args;
-        va_start(args, format);
 
-        PRINT("\033[0;34mINFO: \033[0m", format, args);
-    }
+    #define VINS_INFO(fmt, ...) PRINT("\033[0;34mINFO: \033[0m", fmt, ##__VA_ARGS__)
+    #define VINS_DEBUG(fmt, ...) PRINT("\033[0;33mDEBUG: \033[0m", fmt, ##__VA_ARGS__)
+    #define VINS_ERROR(fmt, ...) PRINT("\033[0;31mERROR: \033[0m", fmt, ##__VA_ARGS__)
 
-
-    inline void VINS_DEBUG(const char* format, ...) {
-        va_list args;
-        va_start(args, format);
-
-        PRINT("\033[0;33mDEBUG: \033[0m", format, args);
-    }
-
-
-    inline void VINS_ERROR(const char* format, ...) {
-        va_list args;
-        va_start(args, format);
-
-        PRINT("\033[0;31mERROR: \033[0m", format, args);
-    }
 } // namespace vins_utils
 
 
