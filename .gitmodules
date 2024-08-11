@@ -1,0 +1,3 @@
+[submodule "tools/VINS-Configurator"]
+	path = tools/VINS-Configurator
+	url = https://github.com/anton-pintya/VINS-Configurator.git
