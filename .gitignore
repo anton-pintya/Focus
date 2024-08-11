@@ -4,3 +4,4 @@ datasets/
 CMakeCache.txt
 cmake_install.cmake
 VINS-Focus
+tools/VINS-Configurator/configs/

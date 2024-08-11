@@ -8,12 +8,10 @@ current:
   sequence: "00"
 
 
-
 # preprocessing:
 #   kitti:
 #   tum_rgbd:
 #   euroc_mav:
-
 
 
 datasets:
