@@ -3,4 +3,6 @@
 
 
 current:
-  camera: "/dev/video0"
+  # device: "/dev/video0"
+  device: 0
+  fps: 30

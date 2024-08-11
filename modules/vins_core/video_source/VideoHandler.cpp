@@ -44,6 +44,6 @@ void VideoHandler::print_info()
 {
     VideoSource::print_info();
 
-    std::cout << "Video folder: " << video_folder << std::endl;
-    std::cout << "Video file: " << video_file << std::endl;
+    VINS_INFO("Video folder: %s", video_folder.c_str());
+    VINS_INFO("Video file: %s", video_file.c_str());
 }

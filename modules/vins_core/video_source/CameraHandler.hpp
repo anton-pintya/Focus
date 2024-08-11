@@ -11,6 +11,8 @@ namespace vins_core
         public:
             /*********Public fields*********/
 
+            cv::VideoCapture camera;            // <-
+            int device_number{0};               // <- 
 
             /*********Public methods*********/
             CameraHandler(std::string configs_path);
@@ -21,6 +23,14 @@ namespace vins_core
              * @return DataPackageBase 
              */
             DataPackageBase read() override;
+
+
+            /**
+             * @brief Print out in the terminal info about current video
+             * 
+             */
+            void print_info() override;
+
 
         protected:
             /*********Protected fields*********/

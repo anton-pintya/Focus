@@ -23,13 +23,17 @@ int main(int argc, char** argv)
     {
         vins_core::DataPackageBase pkg = video_source->read();
 
-        cv::imshow("Image", pkg.img);
+        if (!pkg.img.empty())
+        {
+            cv::imshow("Image", pkg.img);
 
-        int key = cv::waitKey(video_source->fps_to_ms());
+            int key = cv::waitKey(video_source->fps_to_ms());
 
-        if (key == 27) {
-            return 0;
+            if (key == 27) {
+                return 0;
+            }
         }
+        
     }
 
     return 0;

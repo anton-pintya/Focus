@@ -5,7 +5,7 @@
 current:
   
   # Image/video source (video | camera | dataset) 
-  source: "video"
+  source: "camera"
 
   # Dataset name from the DATASETS list
   dataset: "kitti"

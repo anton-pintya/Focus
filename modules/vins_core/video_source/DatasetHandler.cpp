@@ -87,9 +87,9 @@ void DatasetHandler::print_info()
 {
     VideoSource::print_info();
 
-    std::cout << "Image number: " << images.size() << std::endl;
-    std::cout << "Timings number: " << times.size() << std::endl;
-    
+    VINS_INFO("Number of images: %i", images.size());
+    VINS_INFO("Number of timestamps: %i", times.size());
+
     return;
 }
 

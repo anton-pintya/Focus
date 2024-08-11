@@ -14,13 +14,15 @@ void VideoSource::print_info()
     VINS_INFO("VIDEO SOURCE INFO");
 
     if (has_ground_truth()) {
-        std::cout << "Ground-truth poses number: " << poses.size() << std::endl;
+        // std::cout << "Ground-truth poses number: " << poses.size() << std::endl;
+        VINS_INFO("Number of poses: [%i x %i]", poses.size().width, poses.size().height);
     } else {
         VINS_ERROR("No available ground-truth data for given source or file");
     }
 
     if (!calibration.empty()) {
-        std::cout << "Instric params:" << std::endl << calibration << std::endl;
+        VINS_INFO("Instric params:");
+        std::cout << calibration << std::endl;
     } else {
         VINS_ERROR("No available calibration data");
     }
