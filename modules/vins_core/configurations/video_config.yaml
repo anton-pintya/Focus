@@ -6,3 +6,4 @@ current:
   # Dataset name from the DATASETS list
   path: "datasets/custom"
   video: "long.mp4"
+  fps: 30

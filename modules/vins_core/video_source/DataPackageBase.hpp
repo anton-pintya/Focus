@@ -12,7 +12,7 @@ namespace vins_core
      */
     struct DataPackageBase
     {
-        float timestamp{0};             // <- time for given image
+        double timestamp{0};             // <- time for given image
         cv::Mat img;                    // <- image from dataset
     };
 

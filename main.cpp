@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 {
     std::unique_ptr<vins_core::VideoSource> video_source = 
         vins_core::VideoSourceFactory::createVideoSource(
-            "./modules/vins_core/video_source/config.yaml"
+            "./modules/vins_core/configurations/config.yaml"
         );
 
     video_source->print_info();
@@ -22,6 +22,8 @@ int main(int argc, char** argv)
     while (true)
     {
         vins_core::DataPackageBase pkg = video_source->read();
+
+        vins_utils::VINS_DEBUG("Time: %f", pkg.timestamp);
 
         if (!pkg.img.empty())
         {

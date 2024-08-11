@@ -31,10 +31,8 @@ CameraHandler::CameraHandler(std::string config_path)
 DataPackageBase CameraHandler::read()
 {
     CameraPackage package;
-
     camera >> package.img;
-
-    package.timestamp = 123;
+    package.timestamp = _get_time_since_first_call();
 
     return package;
 }

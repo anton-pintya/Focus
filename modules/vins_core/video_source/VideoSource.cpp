@@ -1,5 +1,6 @@
 #include <fstream>
 #include <dirent.h>
+#include <chrono>
 
 #include "VideoSource.hpp"
 
@@ -83,4 +84,27 @@ void VideoSource::_load_poses(std::string path)
 
     poses_file.close();
     return;
+}
+
+
+
+double VideoSource::_get_time_since_last_call()
+{
+    static auto last_call_time = std::chrono::steady_clock::now();
+
+    auto current_time = std::chrono::steady_clock::now();
+
+    std::chrono::duration<double> elapsed_time = current_time - last_call_time;
+
+    last_call_time = current_time;
+
+    return elapsed_time.count();
+}
+
+
+double VideoSource::_get_time_since_first_call()
+{
+    static double time_passed = 0;
+    time_passed += _get_time_since_last_call();
+    return time_passed;
 }

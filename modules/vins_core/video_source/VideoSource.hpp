@@ -75,6 +75,22 @@ namespace vins_core
              */
             void _load_poses(std::string path);
 
+
+            /**
+             * @brief Return number of seconds since function had been called
+             * 
+             * @return double 
+             */
+            double _get_time_since_last_call();
+
+
+            /**
+             * @brief Return number of seconds since function had been called first time
+             * 
+             * @return double 
+             */
+            double _get_time_since_first_call();
+
         private:
             /*********Private fields*********/
 

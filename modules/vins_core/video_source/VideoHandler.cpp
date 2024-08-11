@@ -16,6 +16,7 @@ VideoHandler::VideoHandler(const std::string config_path)
 
     fs["current"]["path"] >> video_folder;
     fs["current"]["video"] >> video_file;
+    fs["current"]["fps"] >> fps;
 
     fs.release();
 
@@ -34,7 +35,7 @@ DataPackageBase VideoHandler::read()
 {
     VideoPackage package;
     video >> package.img;
-    package.timestamp = 1000; // <- change to chrono::current_time (or smth like this)
+    package.timestamp = _get_time_since_first_call();
 
     return package;
 }
