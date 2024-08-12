@@ -4,3 +4,8 @@ datasets/
 CMakeCache.txt
 cmake_install.cmake
 VINS-Focus
+
+tools/VINS-Configurator/__pycache__/
+tools/VINS-Configurator/lib/
+tools/VINS-Configurator/lib64/
+tools/VINS-Configurator/.gitignore
