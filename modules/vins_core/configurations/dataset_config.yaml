@@ -5,7 +5,7 @@
 current:
   # Dataset name from the DATASETS list
   dataset: "kitti"
-  sequence: "00"
+  sequence: "02"
 
 
 # preprocessing:

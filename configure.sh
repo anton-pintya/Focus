@@ -2,4 +2,4 @@ cd tools/VINS-Configurator
 
 source ./bin/activate
 
-python app.py
+python app.py --win
