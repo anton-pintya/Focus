@@ -2,7 +2,7 @@
 #include <dirent.h>
 #include <chrono>
 
-#include "VideoSource.hpp"
+#include "vins_core/video_source/inc/VideoSource.hpp"
 
 #include "vins_utils/print_info.hpp"
 

@@ -1,4 +1,4 @@
-#include "CameraHandler.hpp"
+#include "vins_core/video_source/inc/CameraHandler.hpp"
 #include "vins_utils/print_info.hpp"
 
 using namespace vins_core;
