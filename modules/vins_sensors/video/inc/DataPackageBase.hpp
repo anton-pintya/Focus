@@ -4,7 +4,7 @@
 #include <opencv2/opencv.hpp>
 
 
-namespace vins_core
+namespace vins_sens
 {
     /**
      * @brief Perform a basic package for monocular visual odometry dataset
@@ -36,7 +36,7 @@ namespace vins_core
     
 
 
-} // namespace vins_core
+} // namespace vins_sensors
 
 
 #endif

@@ -5,7 +5,7 @@
 #include <iostream>
 #include "DataPackageBase.hpp"
 
-namespace vins_core
+namespace vins_sens
 {
     class VideoSource
     {

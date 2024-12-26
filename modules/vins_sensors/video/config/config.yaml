@@ -3,5 +3,4 @@
 
 
 current:
-  device: 0
-  fps: 30
+  source: "camera"

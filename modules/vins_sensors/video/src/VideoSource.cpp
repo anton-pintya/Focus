@@ -2,12 +2,12 @@
 #include <dirent.h>
 #include <chrono>
 
-#include "vins_core/video_source/inc/VideoSource.hpp"
+#include "vins_sensors/video_source/inc/VideoSource.hpp"
 
 #include "vins_utils/print_info.hpp"
 
 
-using namespace vins_core;
+using namespace vins_sens;
 using namespace vins_utils;
 
 void VideoSource::print_info()

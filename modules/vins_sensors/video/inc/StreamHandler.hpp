@@ -8,7 +8,7 @@
 #include "VideoSource.hpp"
 
 
-namespace vins_core
+namespace vins_sens
 {
     class StreamHandler : public VideoSource
     {

@@ -1,21 +1,23 @@
-#ifndef CAMERA_HANDLER_HPP
-#define CAMERA_HANDLER_HPP
+#ifndef VIDEO_HANDLER_HPP
+#define VIDEO_HANDLER_HPP
 
 #include "VideoSource.hpp"
+#include <opencv2/opencv.hpp>
 
 
-namespace vins_core
+namespace vins_sens
 {
-    class CameraHandler : public VideoSource
+    class VideoHandler : public VideoSource
     {
         public:
             /*********Public fields*********/
+            cv::VideoCapture video;             // <-
 
-            cv::VideoCapture camera;            // <-
-            int device_number{0};               // <- 
+            std::string video_folder{""};
+            std::string video_file{""};         // <- 
 
             /*********Public methods*********/
-            CameraHandler(std::string configs_path);
+            VideoHandler(std::string config_path);
 
             /**
              * @brief Return DataPackage for given video source with available data for it
@@ -44,6 +46,7 @@ namespace vins_core
 
 
             /*********Private methods*********/
+
 
     };
 }

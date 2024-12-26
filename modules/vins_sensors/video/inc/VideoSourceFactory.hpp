@@ -15,7 +15,7 @@
 #include "vins_utils/print_info.hpp"
 
 
-namespace vins_core
+namespace vins_sens
 {
     using namespace vins_utils;
 
@@ -38,19 +38,19 @@ namespace vins_core
 
                 if (video_source == "dataset") {
                     return std::unique_ptr<VideoSource>(
-                            new DatasetHandler("../modules/vins_core/configurations/dataset_config.yaml")
+                            new DatasetHandler("../modules/vins_sensors/configurations/dataset_config.yaml")
                     );
                 } else if (video_source == "video") {
                     return std::unique_ptr<VideoSource>(
-                            new VideoHandler("../modules/vins_core/configurations/video_config.yaml")
+                            new VideoHandler("../modules/vins_sensors/configurations/video_config.yaml")
                     );
                 } else if (video_source == "camera") {
                     return std::unique_ptr<VideoSource>(
-                            new CameraHandler("../modules/vins_core/configurations/camera_config.yaml")
+                            new CameraHandler("../modules/vins_sensors/configurations/camera_config.yaml")
                     );
                 } else if (video_source == "stream") {
                     return std::unique_ptr<VideoSource>(
-                            new StreamHandler("../modules/vins_core/configurations/stream_config.yaml")
+                            new StreamHandler("../modules/vins_sensors/configurations/stream_config.yaml")
                     );
                 } else {
                     VINS_ERROR("Unknown video source: %s", video_source.c_str());

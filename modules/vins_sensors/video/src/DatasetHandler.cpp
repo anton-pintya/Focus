@@ -7,7 +7,7 @@
 
 #include "vins_utils/print_info.hpp"
 
-using namespace vins_core;
+using namespace vins_sens;
 using namespace vins_utils;
 
 DatasetHandler::DatasetHandler(std::string config_path)

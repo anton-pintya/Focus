@@ -7,7 +7,7 @@
 #include "VideoSource.hpp"
 
 
-namespace vins_core
+namespace vins_sens
 {
 
     /**
@@ -111,6 +111,6 @@ namespace vins_core
 
     };
 
-} // namespace vins_core
+} // namespace vins_sensors
 
 #endif
