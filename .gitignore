@@ -1,6 +1,8 @@
 build/
+.cmake/
 CMakeFiles/
+.idea/
 datasets/
+modules/vins_core/topics/msg_generated/
 CMakeCache.txt
 cmake_install.cmake
-VINS-Focus

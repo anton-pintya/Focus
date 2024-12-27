@@ -31,30 +31,32 @@ namespace vins_sens
                     return nullptr;
                 }
 
-
                 std::string video_source;
+                fs["general"]["source"] >> video_source;
 
-                fs["current"]["source"] >> video_source;
+                cv::FileNode node = fs[video_source];
 
                 if (video_source == "dataset") {
                     return std::unique_ptr<VideoSource>(
-                            new DatasetHandler("../modules/vins_sensors/configurations/dataset_config.yaml")
+                            new DatasetHandler(node)
                     );
                 } else if (video_source == "video") {
                     return std::unique_ptr<VideoSource>(
-                            new VideoHandler("../modules/vins_sensors/configurations/video_config.yaml")
+                            new VideoHandler(node)
                     );
                 } else if (video_source == "camera") {
                     return std::unique_ptr<VideoSource>(
-                            new CameraHandler("../modules/vins_sensors/configurations/camera_config.yaml")
+                            new CameraHandler(node)
                     );
                 } else if (video_source == "stream") {
                     return std::unique_ptr<VideoSource>(
-                            new StreamHandler("../modules/vins_sensors/configurations/stream_config.yaml")
+                            new StreamHandler(node)
                     );
                 } else {
                     VINS_ERROR("Unknown video source: %s", video_source.c_str());
                 }
+
+                fs.release();
 
                 return nullptr;
             }

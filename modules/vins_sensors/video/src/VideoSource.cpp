@@ -2,13 +2,29 @@
 #include <dirent.h>
 #include <chrono>
 
-#include "vins_sensors/video_source/inc/VideoSource.hpp"
+//#include "vins_sensors/video/inc/VideoSource.hpp"
+#include "vins_sensors/video/video.hpp"
 
 #include "vins_utils/print_info.hpp"
 
 
 using namespace vins_sens;
 using namespace vins_utils;
+
+
+void VideoSource::publish(const DataPackageBase& pkg) {
+    sensor_image_gray msg;
+    msg.width = pkg.img.cols;
+    msg.height = pkg.img.rows;
+//    msg_generated.channels = pkg.img.channels();
+
+    cv::Mat empty;
+    cv::cvtColor(pkg.img, empty, cv::COLOR_BGR2GRAY);
+    memcpy(msg.data, empty.data, empty.size().width * empty.size().height);
+
+    image_pub.publish(msg);
+}
+
 
 void VideoSource::print_info()
 {

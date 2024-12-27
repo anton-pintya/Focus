@@ -1,0 +1,17 @@
+#ifndef VINS_FOCUS_{{ topic_name.upper() }}_HPP
+#define VINS_FOCUS_{{ topic_name.upper() }}_HPP
+
+
+#include "../Topic.hpp"
+
+
+#pragma pack(push, 1)
+struct {{ topic_name.lower() }} {
+    {% for line in lines: %} {{ line }};
+    {% endfor %}
+};
+#pragma pack(pop)
+
+REGISTER_TOPIC({{ topic_name }})
+
+#endif //VINS_FOCUS_{{ topic_name.upper() }}_HPP

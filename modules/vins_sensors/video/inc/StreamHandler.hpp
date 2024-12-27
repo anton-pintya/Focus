@@ -19,7 +19,7 @@ namespace vins_sens
         std::string pipeline{""};
 
         /*********Public methods*********/
-        StreamHandler(std::string config_path);
+        StreamHandler(cv::FileNode config);
 
         /**
          * @brief Return DataPackage for given video source with available data for it

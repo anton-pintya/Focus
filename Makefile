@@ -48,18 +48,18 @@ RM = /home/apin/cmake-3.5.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/apin/Desktop/Focus
+CMAKE_SOURCE_DIR = /home/apin/Desktop/ComputerVision/Focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/apin/Desktop/Focus
+CMAKE_BINARY_DIR = /home/apin/Desktop/ComputerVision/Focus
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/home/apin/cmake-3.5.1/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/apin/cmake-3.5.1/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/apin/Desktop/Focus/CMakeFiles /home/apin/Desktop/Focus/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/apin/Desktop/ComputerVision/Focus/CMakeFiles /home/apin/Desktop/ComputerVision/Focus/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/apin/Desktop/Focus/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/apin/Desktop/ComputerVision/Focus/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named msg_generate
+
+# Build rule for target.
+msg_generate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msg_generate
+.PHONY : msg_generate
+
+# fast build rule for target.
+msg_generate/fast:
+	$(MAKE) -f CMakeFiles/msg_generate.dir/build.make CMakeFiles/msg_generate.dir/build
+.PHONY : msg_generate/fast
+
+#=============================================================================
 # Target rules for targets named VINS-Focus
 
 # Build rule for target.
@@ -124,17 +137,17 @@ VINS-Focus/fast:
 .PHONY : VINS-Focus/fast
 
 #=============================================================================
-# Target rules for targets named vins_core
+# Target rules for targets named vins_sensors
 
 # Build rule for target.
-vins_core: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vins_core
-.PHONY : vins_core
+vins_sensors: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vins_sensors
+.PHONY : vins_sensors
 
 # fast build rule for target.
-vins_core/fast:
-	$(MAKE) -f build/vins_core/CMakeFiles/vins_core.dir/build.make build/vins_core/CMakeFiles/vins_core.dir/build
-.PHONY : vins_core/fast
+vins_sensors/fast:
+	$(MAKE) -f build/vins_sensors/CMakeFiles/vins_sensors.dir/build.make build/vins_sensors/CMakeFiles/vins_sensors.dir/build
+.PHONY : vins_sensors/fast
 
 #=============================================================================
 # Target rules for targets named vins_utils
@@ -176,6 +189,87 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+modules/vins_core/node/Node.o: modules/vins_core/node/Node.cpp.o
+
+.PHONY : modules/vins_core/node/Node.o
+
+# target to build an object file
+modules/vins_core/node/Node.cpp.o:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.o
+.PHONY : modules/vins_core/node/Node.cpp.o
+
+modules/vins_core/node/Node.i: modules/vins_core/node/Node.cpp.i
+
+.PHONY : modules/vins_core/node/Node.i
+
+# target to preprocess a source file
+modules/vins_core/node/Node.cpp.i:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.i
+.PHONY : modules/vins_core/node/Node.cpp.i
+
+modules/vins_core/node/Node.s: modules/vins_core/node/Node.cpp.s
+
+.PHONY : modules/vins_core/node/Node.s
+
+# target to generate assembly for a file
+modules/vins_core/node/Node.cpp.s:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.s
+.PHONY : modules/vins_core/node/Node.cpp.s
+
+modules/vins_core/publisher/Publisher.o: modules/vins_core/publisher/Publisher.cpp.o
+
+.PHONY : modules/vins_core/publisher/Publisher.o
+
+# target to build an object file
+modules/vins_core/publisher/Publisher.cpp.o:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.o
+.PHONY : modules/vins_core/publisher/Publisher.cpp.o
+
+modules/vins_core/publisher/Publisher.i: modules/vins_core/publisher/Publisher.cpp.i
+
+.PHONY : modules/vins_core/publisher/Publisher.i
+
+# target to preprocess a source file
+modules/vins_core/publisher/Publisher.cpp.i:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.i
+.PHONY : modules/vins_core/publisher/Publisher.cpp.i
+
+modules/vins_core/publisher/Publisher.s: modules/vins_core/publisher/Publisher.cpp.s
+
+.PHONY : modules/vins_core/publisher/Publisher.s
+
+# target to generate assembly for a file
+modules/vins_core/publisher/Publisher.cpp.s:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.s
+.PHONY : modules/vins_core/publisher/Publisher.cpp.s
+
+modules/vins_core/subscriber/Subscriber.o: modules/vins_core/subscriber/Subscriber.cpp.o
+
+.PHONY : modules/vins_core/subscriber/Subscriber.o
+
+# target to build an object file
+modules/vins_core/subscriber/Subscriber.cpp.o:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.o
+.PHONY : modules/vins_core/subscriber/Subscriber.cpp.o
+
+modules/vins_core/subscriber/Subscriber.i: modules/vins_core/subscriber/Subscriber.cpp.i
+
+.PHONY : modules/vins_core/subscriber/Subscriber.i
+
+# target to preprocess a source file
+modules/vins_core/subscriber/Subscriber.cpp.i:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.i
+.PHONY : modules/vins_core/subscriber/Subscriber.cpp.i
+
+modules/vins_core/subscriber/Subscriber.s: modules/vins_core/subscriber/Subscriber.cpp.s
+
+.PHONY : modules/vins_core/subscriber/Subscriber.s
+
+# target to generate assembly for a file
+modules/vins_core/subscriber/Subscriber.cpp.s:
+	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.s
+.PHONY : modules/vins_core/subscriber/Subscriber.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -184,12 +278,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... msg_generate"
 	@echo "... VINS-Focus"
-	@echo "... vins_core"
+	@echo "... vins_sensors"
 	@echo "... vins_utils"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... modules/vins_core/node/Node.o"
+	@echo "... modules/vins_core/node/Node.i"
+	@echo "... modules/vins_core/node/Node.s"
+	@echo "... modules/vins_core/publisher/Publisher.o"
+	@echo "... modules/vins_core/publisher/Publisher.i"
+	@echo "... modules/vins_core/publisher/Publisher.s"
+	@echo "... modules/vins_core/subscriber/Subscriber.o"
+	@echo "... modules/vins_core/subscriber/Subscriber.i"
+	@echo "... modules/vins_core/subscriber/Subscriber.s"
 .PHONY : help
 
 

@@ -1,0 +1,5 @@
+uint16_t width
+uint16_t height
+uint8_t r[1920 * 1080]
+uint8_t g[1920 * 1080]
+uint8_t b[1920 * 1080]

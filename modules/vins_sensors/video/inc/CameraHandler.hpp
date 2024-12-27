@@ -15,7 +15,7 @@ namespace vins_sens
             int device_number{0};               // <- 
 
             /*********Public methods*********/
-            CameraHandler(std::string configs_path);
+            CameraHandler(cv::FileNode config);
 
             /**
              * @brief Return DataPackage for given video source with available data for it

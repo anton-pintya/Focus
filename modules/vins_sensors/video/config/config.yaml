@@ -2,5 +2,28 @@
 ---
 
 
-current:
+general:
   source: "camera"
+
+dataset:  # Dataset name from the DATASETS list
+  name: "kitti"
+  sequence: "02"
+
+  kitti:
+    resolution: [ 1271, 376 ]
+    fps: 10
+  euroc_mav:
+    resolution: [ 752, 480 ]
+    fps: 20
+
+camera:
+  device: 0
+  fps: 30
+
+video:
+  path: "datasets/custom"
+  video: "long.mp4"
+  fps: 30
+
+stream:
+  pipeline: "udpsrc port=5600 auto-multicast=true caps=\"application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264\" ! rtph264depay ! avdec_h264 ! videoconvert ! appsink sync=false"

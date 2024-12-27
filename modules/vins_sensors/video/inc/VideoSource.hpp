@@ -4,6 +4,10 @@
 
 #include <iostream>
 #include "DataPackageBase.hpp"
+#include "vins_core/core.hpp"
+#include "vins_core/topics/msg_generated/sensor_image_gray.hpp"
+#include "vins_core/topics/msg_generated/sensor_image_rgb.hpp"
+
 
 namespace vins_sens
 {
@@ -25,6 +29,13 @@ namespace vins_sens
              */
             virtual DataPackageBase read() = 0;
 
+
+            /**
+             * @brief Publish DataPackage for given video source
+             *
+             * @return
+             */
+            void publish(const DataPackageBase& pkg);
 
             /**
              * @brief Return True if ground-truth data is available for given video source
@@ -57,6 +68,9 @@ namespace vins_sens
 
             bool    has_gt{false};  // <- is ground-truth data available
             int     fps{30};        // <- FPS value for given source
+
+            vins_core::Publisher<sensor_image_gray> image_pub;  // <- Grayscale mage publisher
+
 
             /*********Protected methods*********/
 
@@ -93,12 +107,10 @@ namespace vins_sens
 
         private:
             /*********Private fields*********/
-
             
 
             /*********Private methods*********/
 
-            
 
     };
 }

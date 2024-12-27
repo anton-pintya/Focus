@@ -1,4 +1,4 @@
-#include "vins_core/video_source/inc/CameraHandler.hpp"
+#include "vins_sensors/video/video.hpp"
 #include "vins_utils/print_info.hpp"
 
 using namespace vins_sens;
@@ -6,25 +6,12 @@ using namespace vins_utils;
 
 
 
-CameraHandler::CameraHandler(std::string config_path)
+CameraHandler::CameraHandler(cv::FileNode config)
 {
-    cv::FileStorage fs(config_path, cv::FileStorage::READ);
-
-    if (!fs.isOpened()) {
-        VINS_ERROR("Unable to open video file config: %s", config_path.c_str());
-        return;
-    }
-
-    fs["current"]["device"] >> device_number;
-    fs["current"]["fps"] >> fps;
-
-    fs.release();
-
-    // std::string calib_path = video_folder + "/calibration/" + video_file.substr(0, video_file.size() - 3) + "yaml";
+    config["device"] >> device_number;
+    config["fps"] >> fps;
 
     camera.open(device_number);
-
-    // _load_calibration(calib_path);
 }
 
 
@@ -33,6 +20,8 @@ DataPackageBase CameraHandler::read()
     CameraPackage package;
     camera >> package.img;
     package.timestamp = _get_time_since_first_call();
+
+    publish(package);
 
     return package;
 }

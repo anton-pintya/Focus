@@ -17,7 +17,7 @@ namespace vins_sens
             std::string video_file{""};         // <- 
 
             /*********Public methods*********/
-            VideoHandler(std::string config_path);
+            VideoHandler(cv::FileNode config);
 
             /**
              * @brief Return DataPackage for given video source with available data for it

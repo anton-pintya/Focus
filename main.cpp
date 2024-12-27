@@ -1,39 +1,35 @@
-#include "vins_core/video_source/VideoSourceFactory.hpp"
-#include "vins_core/param_handler/ParamHandler.hpp"
-#include "vins_core/video_source/DataPackageBase.hpp"
-
+#include "vins_sensors/video/video.hpp"
 #include "vins_utils/print_info.hpp"
 
-// using namespace vins_core;
-// using namespace vins_utils;
+#include "vins_core/core.hpp"
 
-int main(int argc, char** argv)
-{
-    std::unique_ptr<vins_core::VideoSource> video_source = 
-        vins_core::VideoSourceFactory::createVideoSource(
-            "./modules/vins_core/configurations/config.yaml"
-        );
+
+int main(int argc, char** argv) {
+
+    auto video_source = vins_sens::VideoSourceFactory::createVideoSource(
+            "./modules/vins_sensors/video/config/config.yaml"
+    );
 
     video_source->print_info();
 
-    vins_core::ParamHandler params("./modules/vins_core/param_handler/params.yaml");
-    
+    vins_core::Subscriber<sensor_image_gray> sub_img;
 
-    while (true)
-    {
-        vins_core::DataPackageBase pkg = video_source->read();
+    while (true) {
+        vins_sens::DataPackageBase pkg = video_source->read();
+        sensor_image_gray img = sub_img.receive();
 
-        vins_utils::VINS_DEBUG("Time: %f", pkg.timestamp);
+        cv::Mat image = cv::Mat(img.height, img.width, CV_8UC1, img.data);
 
-        if (!pkg.img.empty())
-        {
-            cv::imshow("Image", pkg.img);
+        if (!image.empty()) {
+            cv::imshow("Image", image);
 
             int key = cv::waitKey(video_source->fps_to_ms());
 
             if (key == 27) {
-                return 0;
+                break;
             }
+        } else {
+            vins_utils::VINS_DEBUG("Image is empty");
         }
         
     }

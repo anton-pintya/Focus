@@ -1,4 +1,4 @@
-#include "vins_core/video_source/inc/DatasetHandler.hpp"
+#include "vins_sensors/video/video.hpp"
 #include <fstream>
 #include <dirent.h>
 #include <algorithm>
@@ -10,22 +10,13 @@
 using namespace vins_sens;
 using namespace vins_utils;
 
-DatasetHandler::DatasetHandler(std::string config_path)
+DatasetHandler::DatasetHandler(cv::FileNode config)
 {
-    cv::FileStorage fs(config_path, cv::FileStorage::READ);
-
-    if (!fs.isOpened()) {
-        VINS_ERROR("Unable to open dataset config file: %s", config_path);
-        return;
-    }
-
     std::string dataset;
     std::string seq;
-    fs["current"]["dataset"] >> dataset;
-    fs["current"]["sequence"] >> seq;
-    fs["datasets"][dataset]["fps"] >> fps;
-    
-    fs.release();
+    config["name"] >> dataset;
+    config["sequence"] >> seq;
+    config[dataset]["fps"] >> fps;
 
     VINS_DEBUG("%s", dataset.c_str());
 
@@ -46,6 +37,9 @@ DataPackageBase DatasetHandler::read()
     static int counter = 0;
     DatasetPackage package = get_pack(counter);
     counter++;
+
+    publish(package);
+
     return package;
 }
 

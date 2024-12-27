@@ -31,7 +31,7 @@ namespace vins_sens
              * 
              * @param configs_path - path to dataset's config file
              */
-            DatasetHandler(std::string configs_path);
+            DatasetHandler(cv::FileNode config);
 
 
             /**

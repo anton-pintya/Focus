@@ -1,24 +1,15 @@
-#include "vins_core/video_source/inc/VideoHandler.hpp"
+#include "vins_sensors/video/video.hpp"
 #include "vins_utils/print_info.hpp"
 
 
 using namespace vins_sens;
 using namespace vins_utils;
 
-VideoHandler::VideoHandler(const std::string config_path)
+VideoHandler::VideoHandler(cv::FileNode config)
 {
-    cv::FileStorage fs(config_path, cv::FileStorage::READ);
-
-    if (!fs.isOpened()) {
-        VINS_ERROR("Unable to open video file config: %s", config_path.c_str());
-        return;
-    }
-
-    fs["current"]["path"] >> video_folder;
-    fs["current"]["video"] >> video_file;
-    fs["current"]["fps"] >> fps;
-
-    fs.release();
+    config["path"] >> video_folder;
+    config["video"] >> video_file;
+    config["fps"] >> fps;
 
     std::string video_path = video_folder + "/sequences/" + video_file;
     std::string calib_path = video_folder + "/calibration/" + video_file.substr(0, video_file.size() - 3) + "yaml";
@@ -36,6 +27,8 @@ DataPackageBase VideoHandler::read()
     VideoPackage package;
     video >> package.img;
     package.timestamp = _get_time_since_first_call();
+
+    publish(package);
 
     return package;
 }
