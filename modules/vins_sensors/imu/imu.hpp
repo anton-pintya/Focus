@@ -5,4 +5,9 @@
 #ifndef VINS_FOCUS_IMU_HPP
 #define VINS_FOCUS_IMU_HPP
 
+
+#include "inc/InertialSource.hpp"
+#include "inc/InertialSourceFactory.hpp"
+
+
 #endif //VINS_FOCUS_IMU_HPP

@@ -58,8 +58,8 @@ CMAKE_BINARY_DIR = /home/apin/Desktop/ComputerVision/Focus
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/apin/cmake-3.5.1/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/home/apin/cmake-3.22.0-linux-x86_64/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -189,87 +189,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-modules/vins_core/node/Node.o: modules/vins_core/node/Node.cpp.o
-
-.PHONY : modules/vins_core/node/Node.o
-
-# target to build an object file
-modules/vins_core/node/Node.cpp.o:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.o
-.PHONY : modules/vins_core/node/Node.cpp.o
-
-modules/vins_core/node/Node.i: modules/vins_core/node/Node.cpp.i
-
-.PHONY : modules/vins_core/node/Node.i
-
-# target to preprocess a source file
-modules/vins_core/node/Node.cpp.i:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.i
-.PHONY : modules/vins_core/node/Node.cpp.i
-
-modules/vins_core/node/Node.s: modules/vins_core/node/Node.cpp.s
-
-.PHONY : modules/vins_core/node/Node.s
-
-# target to generate assembly for a file
-modules/vins_core/node/Node.cpp.s:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/node/Node.cpp.s
-.PHONY : modules/vins_core/node/Node.cpp.s
-
-modules/vins_core/publisher/Publisher.o: modules/vins_core/publisher/Publisher.cpp.o
-
-.PHONY : modules/vins_core/publisher/Publisher.o
-
-# target to build an object file
-modules/vins_core/publisher/Publisher.cpp.o:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.o
-.PHONY : modules/vins_core/publisher/Publisher.cpp.o
-
-modules/vins_core/publisher/Publisher.i: modules/vins_core/publisher/Publisher.cpp.i
-
-.PHONY : modules/vins_core/publisher/Publisher.i
-
-# target to preprocess a source file
-modules/vins_core/publisher/Publisher.cpp.i:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.i
-.PHONY : modules/vins_core/publisher/Publisher.cpp.i
-
-modules/vins_core/publisher/Publisher.s: modules/vins_core/publisher/Publisher.cpp.s
-
-.PHONY : modules/vins_core/publisher/Publisher.s
-
-# target to generate assembly for a file
-modules/vins_core/publisher/Publisher.cpp.s:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/publisher/Publisher.cpp.s
-.PHONY : modules/vins_core/publisher/Publisher.cpp.s
-
-modules/vins_core/subscriber/Subscriber.o: modules/vins_core/subscriber/Subscriber.cpp.o
-
-.PHONY : modules/vins_core/subscriber/Subscriber.o
-
-# target to build an object file
-modules/vins_core/subscriber/Subscriber.cpp.o:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.o
-.PHONY : modules/vins_core/subscriber/Subscriber.cpp.o
-
-modules/vins_core/subscriber/Subscriber.i: modules/vins_core/subscriber/Subscriber.cpp.i
-
-.PHONY : modules/vins_core/subscriber/Subscriber.i
-
-# target to preprocess a source file
-modules/vins_core/subscriber/Subscriber.cpp.i:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.i
-.PHONY : modules/vins_core/subscriber/Subscriber.cpp.i
-
-modules/vins_core/subscriber/Subscriber.s: modules/vins_core/subscriber/Subscriber.cpp.s
-
-.PHONY : modules/vins_core/subscriber/Subscriber.s
-
-# target to generate assembly for a file
-modules/vins_core/subscriber/Subscriber.cpp.s:
-	$(MAKE) -f CMakeFiles/VINS-Focus.dir/build.make CMakeFiles/VINS-Focus.dir/modules/vins_core/subscriber/Subscriber.cpp.s
-.PHONY : modules/vins_core/subscriber/Subscriber.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -285,15 +204,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... modules/vins_core/node/Node.o"
-	@echo "... modules/vins_core/node/Node.i"
-	@echo "... modules/vins_core/node/Node.s"
-	@echo "... modules/vins_core/publisher/Publisher.o"
-	@echo "... modules/vins_core/publisher/Publisher.i"
-	@echo "... modules/vins_core/publisher/Publisher.s"
-	@echo "... modules/vins_core/subscriber/Subscriber.o"
-	@echo "... modules/vins_core/subscriber/Subscriber.i"
-	@echo "... modules/vins_core/subscriber/Subscriber.s"
 .PHONY : help
 
 

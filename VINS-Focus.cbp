@@ -54,6 +54,7 @@
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -72,6 +73,7 @@
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -90,6 +92,7 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -108,6 +111,7 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -126,6 +130,7 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -144,6 +149,7 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -159,29 +165,14 @@
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/main.cpp">
          <Option target="VINS-Focus"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/core.hpp">
-         <Option target="VINS-Focus"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/imu.hpp">
+         <Option target="vins_sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/node/Node.cpp">
-         <Option target="VINS-Focus"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/inc/InertialSource.hpp">
+         <Option target="vins_sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/node/Node.hpp">
-         <Option target="VINS-Focus"/>
-      </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/publisher/Publisher.cpp">
-         <Option target="VINS-Focus"/>
-      </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/publisher/Publisher.hpp">
-         <Option target="VINS-Focus"/>
-      </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/subscriber/Subscriber.cpp">
-         <Option target="VINS-Focus"/>
-      </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/subscriber/Subscriber.hpp">
-         <Option target="VINS-Focus"/>
-      </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_core/topics/Topic.hpp">
-         <Option target="VINS-Focus"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/src/InertialSource.cpp">
+         <Option target="vins_sensors"/>
       </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/CameraHandler.hpp">
          <Option target="vins_sensors"/>

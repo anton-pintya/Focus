@@ -1,4 +1,5 @@
 #include "vins_sensors/video/video.hpp"
+#include "vins_sensors/imu/imu.hpp"
 #include "vins_utils/print_info.hpp"
 
 #include "vins_core/core.hpp"
@@ -10,7 +11,22 @@ int main(int argc, char** argv) {
             "./modules/vins_sensors/video/config/config.yaml"
     );
 
+    if (video_source == nullptr) {
+        vins_utils::VINS_ERROR("Failed to instantiate video source");
+        return -1;
+    }
+
+    auto imu_source = vins_sens::InertialSourceFactory::createInertialSource(
+        "./modules/vins_sensors/imu/config/config.yaml"
+    );
+
+    if (imu_source == nullptr) {
+        vins_utils::VINS_ERROR("Failed to instantiate inertial source");
+        return -1;
+    }
+
     video_source->print_info();
+    imu_source->print_info();
 
     vins_core::Subscriber<sensor_image_gray> sub_img;
 
