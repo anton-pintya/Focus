@@ -5,7 +5,7 @@
       <Option title="VINS-Focus" />
       <Option makefile_is_custom="1" />
       <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\modules\;CMake Files\modules\vins_sensors\;CMake Files\modules\vins_utils\;" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\core\;CMake Files\sensors\;CMake Files\utils\;" />
       <Build>
       <Target title="all">
          <Option working_dir="/home/apin/Desktop/ComputerVision/Focus" />
@@ -54,9 +54,11 @@
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
@@ -73,9 +75,11 @@
          <Option type="1" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
@@ -85,142 +89,237 @@
             <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="vins_sensors">
-         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/libvins_sensors.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors" />
+      <Target title="core">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/core/libcore.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/core" />
          <Option object_output="./" />
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 vins_sensors" />
-            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 core" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="vins_sensors/fast">
-         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/libvins_sensors.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors" />
+      <Target title="core/fast">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/core/libcore.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/core" />
          <Option object_output="./" />
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 vins_sensors/fast" />
-            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_sensors/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 core/fast" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/core/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="vins_utils">
-         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/libvins_utils.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/vins_utils" />
+      <Target title="sensors">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/sensors/libsensors.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/sensors" />
          <Option object_output="./" />
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 vins_utils" />
-            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 sensors" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="vins_utils/fast">
-         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/libvins_utils.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/vins_utils" />
+      <Target title="sensors/fast">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/sensors/libsensors.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/sensors" />
          <Option object_output="./" />
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules" />
-            <Add directory="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 vins_utils/fast" />
-            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/vins_utils/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 sensors/fast" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/sensors/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="utils">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/utils/libutils.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/utils" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
+            <Add directory="/usr/local/include/opencv4" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 utils" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="utils/fast">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/utils/libutils.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/utils" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
+            <Add directory="/usr/local/include/opencv4" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 utils/fast" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       </Build>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/Node.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/Publisher.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/Subscriber.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/Topic.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/msg_generated/sensor_accel.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/msg_generated/sensor_gyro.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/msg_generated/sensor_image_gray.hpp">
+         <Option target="core"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/transport/msg_generated/sensor_image_rgb.hpp">
+         <Option target="core"/>
+      </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/main.cpp">
          <Option target="VINS-Focus"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/imu.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/basic_source/InertialSource.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/inc/InertialSource.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/basic_source/InertialSource.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/src/InertialSource.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/basic_source/InertialSourceFactory.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/CameraHandler.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/DataPackageBase.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_file/IMUFileHandler.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/DatasetHandler.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_file/IMUFileHandler.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/StreamHandler.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_gazebo/IMUGazeboHandler.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/VideoHandler.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_gazebo/IMUGazeboHandler.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/VideoSource.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_sensor/IMUSensorHandler.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/inc/VideoSourceFactory.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/imu_sensor/IMUSensorHandler.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/src/CameraHandler.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/DataPackageBase.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/src/DatasetHandler.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/basic_source/VideoSource.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/src/StreamHandler.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/basic_source/VideoSource.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/src/VideoHandler.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/basic_source/VideoSourceFactory.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/src/VideoSource.cpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/video/video.hpp">
-         <Option target="vins_sensors"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_camera/CameraHandler.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils/print_info.hpp">
-         <Option target="vins_utils"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_camera/CameraHandler.hpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils/video_recorder/VideoRecorder.cpp">
-         <Option target="vins_utils"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_dataset/DatasetHandler.cpp">
+         <Option target="sensors"/>
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils/video_recorder/VideoRecorder.hpp">
-         <Option target="vins_utils"/>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_dataset/DatasetHandler.hpp">
+         <Option target="sensors"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_record/VideoHandler.cpp">
+         <Option target="sensors"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_record/VideoHandler.hpp">
+         <Option target="sensors"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_stream/StreamHandler.cpp">
+         <Option target="sensors"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/video/video_stream/StreamHandler.hpp">
+         <Option target="sensors"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/print_info.hpp">
+         <Option target="utils"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/video_recorder/VideoRecorder.cpp">
+         <Option target="utils"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/video_recorder/VideoRecorder.hpp">
+         <Option target="utils"/>
       </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
@@ -237,17 +336,23 @@
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
           <Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\" />
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\modules\vins_sensors\" />
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\modules\vins_sensors\" />
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/core/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\core\" />
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\modules\vins_utils\" />
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\sensors\" />
       </Unit>
-      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_utils/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\modules\vins_utils\" />
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\sensors\" />
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\utils\" />
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\utils\" />
       </Unit>
    </Project>
 </CodeBlocks_project_file>

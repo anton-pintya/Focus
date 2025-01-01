@@ -58,8 +58,8 @@ CMAKE_BINARY_DIR = /home/apin/Desktop/ComputerVision/Focus
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/home/apin/cmake-3.22.0-linux-x86_64/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/apin/cmake-3.5.1/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -137,30 +137,43 @@ VINS-Focus/fast:
 .PHONY : VINS-Focus/fast
 
 #=============================================================================
-# Target rules for targets named vins_sensors
+# Target rules for targets named core
 
 # Build rule for target.
-vins_sensors: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vins_sensors
-.PHONY : vins_sensors
+core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 core
+.PHONY : core
 
 # fast build rule for target.
-vins_sensors/fast:
-	$(MAKE) -f build/vins_sensors/CMakeFiles/vins_sensors.dir/build.make build/vins_sensors/CMakeFiles/vins_sensors.dir/build
-.PHONY : vins_sensors/fast
+core/fast:
+	$(MAKE) -f build/core/CMakeFiles/core.dir/build.make build/core/CMakeFiles/core.dir/build
+.PHONY : core/fast
 
 #=============================================================================
-# Target rules for targets named vins_utils
+# Target rules for targets named sensors
 
 # Build rule for target.
-vins_utils: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vins_utils
-.PHONY : vins_utils
+sensors: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensors
+.PHONY : sensors
 
 # fast build rule for target.
-vins_utils/fast:
-	$(MAKE) -f build/vins_utils/CMakeFiles/vins_utils.dir/build.make build/vins_utils/CMakeFiles/vins_utils.dir/build
-.PHONY : vins_utils/fast
+sensors/fast:
+	$(MAKE) -f build/sensors/CMakeFiles/sensors.dir/build.make build/sensors/CMakeFiles/sensors.dir/build
+.PHONY : sensors/fast
+
+#=============================================================================
+# Target rules for targets named utils
+
+# Build rule for target.
+utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 utils
+.PHONY : utils
+
+# fast build rule for target.
+utils/fast:
+	$(MAKE) -f build/utils/CMakeFiles/utils.dir/build.make build/utils/CMakeFiles/utils.dir/build
+.PHONY : utils/fast
 
 main.o: main.cpp.o
 
@@ -199,8 +212,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... msg_generate"
 	@echo "... VINS-Focus"
-	@echo "... vins_sensors"
-	@echo "... vins_utils"
+	@echo "... core"
+	@echo "... sensors"
+	@echo "... utils"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
