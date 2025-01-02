@@ -171,6 +171,9 @@
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/inc/InertialSource.hpp">
          <Option target="vins_sensors"/>
       </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/inc/InertialSourceFactory.hpp">
+         <Option target="vins_sensors"/>
+      </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/modules/vins_sensors/imu/src/InertialSource.cpp">
          <Option target="vins_sensors"/>
       </Unit>
