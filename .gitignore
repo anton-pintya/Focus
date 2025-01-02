@@ -3,7 +3,7 @@ build/
 CMakeFiles/
 .idea/
 datasets/
-modules/vins_core/topics/msg_generated/
+core/transport/msg_generated/
 CMakeCache.txt
 cmake_install.cmake
 VINS-Focus.cbp

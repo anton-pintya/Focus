@@ -137,30 +137,56 @@ VINS-Focus/fast:
 .PHONY : VINS-Focus/fast
 
 #=============================================================================
-# Target rules for targets named vins_sensors
+# Target rules for targets named core
 
 # Build rule for target.
-vins_sensors: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vins_sensors
-.PHONY : vins_sensors
+core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 core
+.PHONY : core
 
 # fast build rule for target.
-vins_sensors/fast:
-	$(MAKE) -f build/vins_sensors/CMakeFiles/vins_sensors.dir/build.make build/vins_sensors/CMakeFiles/vins_sensors.dir/build
-.PHONY : vins_sensors/fast
+core/fast:
+	$(MAKE) -f build/core/CMakeFiles/core.dir/build.make build/core/CMakeFiles/core.dir/build
+.PHONY : core/fast
 
 #=============================================================================
-# Target rules for targets named vins_utils
+# Target rules for targets named sensors
 
 # Build rule for target.
-vins_utils: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vins_utils
-.PHONY : vins_utils
+sensors: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensors
+.PHONY : sensors
 
 # fast build rule for target.
-vins_utils/fast:
-	$(MAKE) -f build/vins_utils/CMakeFiles/vins_utils.dir/build.make build/vins_utils/CMakeFiles/vins_utils.dir/build
-.PHONY : vins_utils/fast
+sensors/fast:
+	$(MAKE) -f build/sensors/CMakeFiles/sensors.dir/build.make build/sensors/CMakeFiles/sensors.dir/build
+.PHONY : sensors/fast
+
+#=============================================================================
+# Target rules for targets named utils
+
+# Build rule for target.
+utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 utils
+.PHONY : utils
+
+# fast build rule for target.
+utils/fast:
+	$(MAKE) -f build/utils/CMakeFiles/utils.dir/build.make build/utils/CMakeFiles/utils.dir/build
+.PHONY : utils/fast
+
+#=============================================================================
+# Target rules for targets named nodes
+
+# Build rule for target.
+nodes: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodes
+.PHONY : nodes
+
+# fast build rule for target.
+nodes/fast:
+	$(MAKE) -f build/nodes/CMakeFiles/nodes.dir/build.make build/nodes/CMakeFiles/nodes.dir/build
+.PHONY : nodes/fast
 
 main.o: main.cpp.o
 
@@ -199,8 +225,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... msg_generate"
 	@echo "... VINS-Focus"
-	@echo "... vins_sensors"
-	@echo "... vins_utils"
+	@echo "... core"
+	@echo "... sensors"
+	@echo "... utils"
+	@echo "... nodes"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

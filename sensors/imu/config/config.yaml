@@ -1,0 +1,49 @@
+%YAML 1.2
+---
+
+
+general:
+  source: "gazebo"
+
+
+gazebo:
+
+  calibration:
+    accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )
+    accel_random_walk:    3.0000e-3         # [ m / s^3 / sqrt(Hz) ].  ( accel bias diffusion )
+    accel_offset:         [0.0, 0.0, 0.0]   # [ m / s^2 ]
+    accel_scale:          [1.0, 1.0, 1.0]   # [ a.u. ]
+
+    gyro_noise_density:   1.6968e-04        # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" )
+    gyro_random_walk:     1.9393e-05        # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion )
+    gyro_offset:          [ 0.0, 0.0, 0.0 ] # [ rad / s ]
+    gyro_scale:           [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+
+
+file:
+  path: ""
+
+  calibration:
+    accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )
+    accel_random_walk:    3.0000e-3         # [ m / s^3 / sqrt(Hz) ].  ( accel bias diffusion )
+    accel_offset:         [ 0.0, 0.0, 0.0 ] # [ m / s^2 ]
+    accel_scale:          [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+
+    gyro_noise_density:   1.6968e-04        # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" )
+    gyro_random_walk:     1.9393e-05        # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion )
+    gyro_offset:          [ 0.0, 0.0, 0.0 ] # [ rad / s ]
+    gyro_scale:           [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+
+
+sensor:
+
+  calibration:
+    accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )
+    accel_random_walk:    3.0000e-3         # [ m / s^3 / sqrt(Hz) ].  ( accel bias diffusion )
+    accel_offset:         [ 0.0, 0.0, 0.0 ] # [ m / s^2 ]
+    accel_scale:          [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+
+    gyro_noise_density:   1.6968e-04        # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" )
+    gyro_random_walk:     1.9393e-05        # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion )
+    gyro_offset:          [ 0.0, 0.0, 0.0 ] # [ rad / s ]
+    gyro_scale:           [ 1.0, 1.0, 1.0 ] # [ a.u. ]

@@ -10,12 +10,20 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_LIST_DIR}/libraries)
 
-# Указываем путь к заголовочным файлам модуля vins_sensors/dataset_handler
-include_directories(modules)
+# Указываем путь к заголовочным файлам модуля sensors/dataset_handler
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+include_directories(core)
+include_directories(sensors)
+include_directories(utils)
+include_directories(nodes)
+
 
 # Добавляем подпроекты
-add_subdirectory(modules/vins_sensors build/vins_sensors EXCLUDE_FROM_ALL)
-add_subdirectory(modules/vins_utils build/vins_utils EXCLUDE_FROM_ALL)
+add_subdirectory(core build/core EXCLUDE_FROM_ALL)
+add_subdirectory(sensors build/sensors EXCLUDE_FROM_ALL)
+add_subdirectory(utils build/utils EXCLUDE_FROM_ALL)
+add_subdirectory(nodes build/nodes EXCLUDE_FROM_ALL)
+
 
 # Подключаем библиотеки
 
@@ -36,4 +44,6 @@ add_custom_target(
 #add_dependencies(${PROJECT_NAME} msg_generate)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${OpenCV_LIBS})
-target_link_libraries(${PROJECT_NAME} PRIVATE vins_sensors vins_utils)
+target_link_libraries(${PROJECT_NAME} PRIVATE utils)
+target_link_libraries(${PROJECT_NAME} PRIVATE nodes)
+target_link_libraries(${PROJECT_NAME} PRIVATE sensors)
