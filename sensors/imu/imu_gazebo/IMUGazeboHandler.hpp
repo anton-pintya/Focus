@@ -25,7 +25,7 @@
 namespace vins {
 namespace sensors {
 
-    class IMUGazeboHandler : public InertialSource{
+    class IMUGazeboHandler : public InertialSource {
     public:
         /*********Public fields*********/
 

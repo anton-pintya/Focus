@@ -15,12 +15,14 @@ include_directories(${CMAKE_CURRENT_LIST_DIR})
 include_directories(core)
 include_directories(sensors)
 include_directories(utils)
+include_directories(nodes)
 
 
 # Добавляем подпроекты
 add_subdirectory(core build/core EXCLUDE_FROM_ALL)
 add_subdirectory(sensors build/sensors EXCLUDE_FROM_ALL)
 add_subdirectory(utils build/utils EXCLUDE_FROM_ALL)
+add_subdirectory(nodes build/nodes EXCLUDE_FROM_ALL)
 
 
 # Подключаем библиотеки
@@ -43,4 +45,5 @@ add_custom_target(
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${OpenCV_LIBS})
 target_link_libraries(${PROJECT_NAME} PRIVATE utils)
+target_link_libraries(${PROJECT_NAME} PRIVATE nodes)
 target_link_libraries(${PROJECT_NAME} PRIVATE sensors)

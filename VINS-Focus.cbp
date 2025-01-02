@@ -5,7 +5,7 @@
       <Option title="VINS-Focus" />
       <Option makefile_is_custom="1" />
       <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\core\;CMake Files\sensors\;CMake Files\utils\;" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\core\;CMake Files\sensors\;CMake Files\utils\;CMake Files\nodes\;" />
       <Build>
       <Target title="all">
          <Option working_dir="/home/apin/Desktop/ComputerVision/Focus" />
@@ -57,6 +57,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -78,6 +79,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -99,6 +101,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -120,6 +123,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -141,6 +145,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -162,6 +167,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -183,6 +189,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -204,6 +211,7 @@
             <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
             <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
             <Add directory="/usr/local/include/opencv4" />
@@ -213,6 +221,50 @@
             <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
             <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
             <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/utils/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="nodes">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/nodes/libnodes.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/nodes" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
+            <Add directory="/usr/local/include/opencv4" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 nodes" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="nodes/fast">
+         <Option output="/home/apin/Desktop/ComputerVision/Focus/build/nodes/libnodes.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apin/Desktop/ComputerVision/Focus/build/nodes" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/core" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/libraries" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/nodes" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/sensors" />
+            <Add directory="/home/apin/Desktop/ComputerVision/Focus/utils" />
+            <Add directory="/usr/local/include/opencv4" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 nodes/fast" />
+            <CompileFile command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/gmake -f &quot;/home/apin/Desktop/ComputerVision/Focus/build/nodes/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       </Build>
@@ -242,6 +294,18 @@
       </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/main.cpp">
          <Option target="VINS-Focus"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/imu_node/IMUNode.cpp">
+         <Option target="nodes"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/imu_node/IMUNode.hpp">
+         <Option target="nodes"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/video_node/VideoNode.cpp">
+         <Option target="nodes"/>
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/video_node/VideoNode.hpp">
+         <Option target="nodes"/>
       </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/sensors/imu/basic_source/InertialSource.cpp">
          <Option target="sensors"/>
@@ -353,6 +417,12 @@
       </Unit>
       <Unit filename="/home/apin/Desktop/ComputerVision/Focus/utils/CMakeLists.txt">
           <Option virtualFolder="CMake Files\utils\" />
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\nodes\" />
+      </Unit>
+      <Unit filename="/home/apin/Desktop/ComputerVision/Focus/nodes/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\nodes\" />
       </Unit>
    </Project>
 </CodeBlocks_project_file>

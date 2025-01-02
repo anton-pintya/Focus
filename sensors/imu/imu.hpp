@@ -9,5 +9,4 @@
 #include "sensors/imu/basic_source/InertialSource.hpp"
 #include "sensors/imu/basic_source/InertialSourceFactory.hpp"
 
-
 #endif //VINS_FOCUS_IMU_HPP

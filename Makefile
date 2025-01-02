@@ -175,6 +175,19 @@ utils/fast:
 	$(MAKE) -f build/utils/CMakeFiles/utils.dir/build.make build/utils/CMakeFiles/utils.dir/build
 .PHONY : utils/fast
 
+#=============================================================================
+# Target rules for targets named nodes
+
+# Build rule for target.
+nodes: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodes
+.PHONY : nodes
+
+# fast build rule for target.
+nodes/fast:
+	$(MAKE) -f build/nodes/CMakeFiles/nodes.dir/build.make build/nodes/CMakeFiles/nodes.dir/build
+.PHONY : nodes/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -215,6 +228,7 @@ help:
 	@echo "... core"
 	@echo "... sensors"
 	@echo "... utils"
+	@echo "... nodes"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

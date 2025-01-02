@@ -14,32 +14,32 @@
 namespace vins {
 namespace sensors {
 
-class IMURealSensor : public InertialSource {
+class IMUSensorHandler : public InertialSource {
 
-    public:
-        /*********Public fields*********/
+public:
+    /*********Public fields*********/
 
 
-        /*********Public methods*********/
-        IMURealSensor(cv::FileNode config);
+    /*********Public methods*********/
+//        IMUSensorHandler(cv::FileNode config);
 
 
 //        void read() override;
 //
 //        void print_info() override;
 
-    protected:
-        /*********Protected fields*********/
+protected:
+    /*********Protected fields*********/
 
 
-        /*********Protected methods*********/
+    /*********Protected methods*********/
 
 
-    private:
-        /*********Private fields*********/
+private:
+    /*********Private fields*********/
 
 
-        /*********Private methods*********/
+    /*********Private methods*********/
 
 
 };
