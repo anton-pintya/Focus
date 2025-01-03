@@ -70,8 +70,8 @@ namespace sensors {
 
         bool has_gt{false};  // <- is ground-truth data available
 
-        sensor_accel _acc_data = {0.0, 0.0, 0.0};  // <- Accelerometer data
-        sensor_gyro _gyro_data = {0.0, 0.0, 0.0};  // <- Gyroscope data
+        sensor_accel _acc_data;  // <- Accelerometer data
+        sensor_gyro _gyro_data;  // <- Gyroscope data
 
         vins::core::transport::Publisher<sensor_accel> _acc_pub;  // <- Accelerometer publisher
         vins::core::transport::Publisher<sensor_gyro> _gyro_pub;  // <- Gyroscope publisher

@@ -22,13 +22,16 @@
 #include <cxxabi.h>
 
 
-// Шаблонный класс реестра
+// Templated class for topic registration
 template <typename T>
 struct TopicRegistry : std::false_type {  }; // По умолчанию структура не зарегистрирована
 
-// Специализация для зарегистрированных структур
+// Specialization of the TopicRegistry for the specified topic
 #define REGISTER_TOPIC(T) template<> struct TopicRegistry<T> : std::true_type {  };
 #define DECLARE(n)  #n
+
+
+#define TIMESTAMP
 
 
 namespace vins {
@@ -45,10 +48,10 @@ namespace transport {
         /*********Public methods*********/
 
         explicit Topic() {
-            // Регистрация структуры
+            // Structure must be registered
             static_assert(TopicRegistry<T>::value, "The specified topic is not registered");
 
-            // Создаем топик и открываем shared memory
+            // Topic creation and opening of shared memory
             _topic_name = demangle();
             _shm_fd = shm_open(("/" + _topic_name).c_str(), O_CREAT | O_RDWR, 0666);
 
@@ -56,12 +59,12 @@ namespace transport {
                 throw std::runtime_error("Failed to create/open shared memory: " + std::string(strerror(errno)));
             }
 
-            // Задаем размер shared memory
+            // Size settings for shared memory
             if (ftruncate(_shm_fd, sizeof(T)) == -1) {
                 throw std::runtime_error("Failed to set shared memory size: " + std::string(strerror(errno)));
             }
 
-            // Отображаем shared memory в адресное пространство
+            // Mapping shared memory into address space
             _shared_memory = mmap(nullptr, sizeof(T), PROT_READ | PROT_WRITE, MAP_SHARED, _shm_fd, 0);
 
             if (_shared_memory == MAP_FAILED) {
@@ -82,7 +85,9 @@ namespace transport {
          * @brief Pushes a message to the topic in the shared memory
          * @param message
          */
-        void post(const T& message) {
+        void post(T& message) {
+            message.timestamp = get_timestamp();
+
             {
                 std::lock_guard<std::mutex> lock(_mutex);
                 memcpy(_shared_memory, &message, sizeof(message));
@@ -139,6 +144,12 @@ namespace transport {
                 return result;
             }
             return typeid(T).name();
+        }
+
+
+        static uint64_t get_timestamp() {
+            return std::chrono::duration_cast<std::chrono::milliseconds>(
+                    std::chrono::system_clock::now().time_since_epoch()).count();
         }
 
     };

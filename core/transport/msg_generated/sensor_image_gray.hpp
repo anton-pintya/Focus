@@ -7,6 +7,7 @@
 
 #pragma pack(push, 1)
 struct sensor_image_gray {
+    uint64_t timestamp{0};
      uint16_t width;
      uint16_t height;
      uint8_t data[1920 * 1080];

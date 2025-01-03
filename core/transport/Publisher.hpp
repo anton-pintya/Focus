@@ -31,7 +31,7 @@ namespace transport {
             /*********Public methods*********/
             explicit Publisher() = default;
 
-            void publish(const T& data) {
+            void publish(T& data) {
                 _topic.post(data);
             }
 

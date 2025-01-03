@@ -7,8 +7,9 @@
 
 #pragma pack(push, 1)
 struct {{ topic_name.lower() }} {
-    {% for line in lines: %} {{ line }};
-    {% endfor %}
+    uint64_t timestamp{0};
+    {%for line in lines:%} {{line}};
+    {%endfor%}
 };
 #pragma pack(pop)
 

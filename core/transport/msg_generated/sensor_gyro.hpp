@@ -7,6 +7,7 @@
 
 #pragma pack(push, 1)
 struct sensor_gyro {
+    uint64_t timestamp{0};
      float x;
      float y;
      float z;

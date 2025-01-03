@@ -45,8 +45,8 @@ bool IMUGazeboHandler::_setup_udp_connection() {
 
     // Set the timeout for the connect function
     struct timeval timeout;
-    timeout.tv_sec = 5; // Timeout in seconds
-    timeout.tv_usec = 0; // Timeout in microseconds
+    timeout.tv_sec = (int )_params["timeout"];
+    timeout.tv_usec = 0;
 
     if (setsockopt(_sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout)) < 0) {
         vins_utils::VINS_ERROR("Failed to set socket timeout options: %s", strerror(errno));
@@ -78,8 +78,8 @@ bool IMUGazeboHandler::_setup_tcp_connection() {
 
     // Set the timeout for the connect function
     struct timeval timeout;
-    timeout.tv_sec = 5; // Timeout in seconds
-    timeout.tv_usec = 0; // Timeout in microseconds
+    timeout.tv_sec = (int )_params["timeout"];
+    timeout.tv_usec = 0;
 
     if (setsockopt(_sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout)) < 0) {
         vins_utils::VINS_ERROR("Failed to set socket timeout options: %s", strerror(errno));

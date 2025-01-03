@@ -15,8 +15,6 @@ set(SOURCES
     ${NODES_SOURCES}
 )
 
-message(STATUS "NODES_SOURCES: ${NODES_SOURCES}")
-
 # Создаем библиотеку sensors из этих файлов
 add_library(nodes ${SOURCES})
 

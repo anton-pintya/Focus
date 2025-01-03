@@ -10,6 +10,7 @@ gazebo:
   type: "udp"
   port: 14560 # 19856
   host: "127.0.0.1" # localhost address
+  timeout: 5 # seconds
 
   calibration:
     accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )
@@ -21,6 +22,33 @@ gazebo:
     gyro_random_walk:     1.9393e-05        # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion )
     gyro_offset:          [ 0.0, 0.0, 0.0 ] # [ rad / s ]
     gyro_scale:           [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+
+
+## NOTE: The following configuration is not used in the current version of VINS-Focus
+##       It is kept here for future reference to implement measurements reading directly
+##       from the PX4 autopilot using MAVLink protocol (MAVLINK_RAW_IMU #27 or
+##       MAVLINK_SCALED_IMU #26)
+
+# mavlink:
+
+## NOTE: The following configuration is not used in the current version of VINS-Focus
+##       It is kept here for future reference
+
+#xrce:
+#  type: "udp"
+#  port: "2018"
+#  host: "127.0.0.1"
+#
+#  calibration:
+#    accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )
+#    accel_random_walk:    3.0000e-3         # [ m / s^3 / sqrt(Hz) ].  ( accel bias diffusion )
+#    accel_offset:         [ 0.0, 0.0, 0.0 ] # [ m / s^2 ]
+#    accel_scale:          [ 1.0, 1.0, 1.0 ] # [ a.u. ]
+#
+#    gyro_noise_density:   1.6968e-04        # [ rad / s / sqrt(Hz) ]   ( gyro "white noise" )
+#    gyro_random_walk:     1.9393e-05        # [ rad / s^2 / sqrt(Hz) ] ( gyro bias diffusion )
+#    gyro_offset:          [ 0.0, 0.0, 0.0 ] # [ rad / s ]
+#    gyro_scale:           [ 1.0, 1.0, 1.0 ] # [ a.u. ]
 
 
 file:
