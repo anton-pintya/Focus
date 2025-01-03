@@ -4,6 +4,7 @@ CMakeFiles/
 .idea/
 datasets/
 core/transport/msg_generated/
+simulation/
 CMakeCache.txt
 cmake_install.cmake
 VINS-Focus.cbp

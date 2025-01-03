@@ -15,7 +15,12 @@ StreamHandler::StreamHandler(cv::FileNode config)
 {
     config["pipeline"] >> pipeline;
 
-    video.open(pipeline, cv::CAP_GSTREAMER);
+    bool res = video.open(pipeline, cv::CAP_GSTREAMER);
+
+    if (!res) {
+        VINS_ERROR("Failed to open video stream");
+        std::exit(EXIT_FAILURE);
+    }
 }
 
 

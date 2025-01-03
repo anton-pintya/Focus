@@ -7,6 +7,9 @@ general:
 
 
 gazebo:
+  type: "udp"
+  port: 14560 # 19856
+  host: "127.0.0.1" # localhost address
 
   calibration:
     accel_noise_density:  2.0000e-3         # [ m / s^2 / sqrt(Hz) ]   ( accel "white noise" )

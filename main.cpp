@@ -5,9 +5,12 @@
 #include "core/core.hpp"
 #include "core/transport/msg_generated/sensor_image_gray.hpp"
 
-
 #include "nodes/imu_node/IMUNode.hpp"
 #include "nodes/video_node/VideoNode.hpp"
+
+
+#define TIMEOUT 50
+
 
 int main(int argc, char** argv) {
 
@@ -27,7 +30,8 @@ int main(int argc, char** argv) {
 
     auto start = std::chrono::steady_clock::now();
 
-    while (std::chrono::steady_clock::now() - start < std::chrono::seconds(10)) {
+//    while (std::chrono::steady_clock::now() - start < std::chrono::seconds(TIMEOUT)) {
+    while (true) {
         sensor_accel accel = sub_accel.receive();
         vins_utils::VINS_INFO("Accel: %f %f %f", accel.x, accel.y, accel.z);
 

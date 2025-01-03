@@ -16,7 +16,12 @@ VideoHandler::VideoHandler(cv::FileNode config)
     std::string calib_path = video_folder + "/calibration/" + video_file.substr(0, video_file.size() - 3) + "yaml";
     std::string poses_path = video_folder + "/poses/" + video_file.substr(0, video_file.size() - 3) + "txt";
 
-    video.open(video_path);
+    bool res = video.open(video_path);
+
+    if (!res) {
+        VINS_ERROR("Failed to open video file %s", video_path.c_str());
+        std::exit(EXIT_FAILURE);
+    }
 
     _load_calibration(calib_path);
     _load_poses(poses_path);

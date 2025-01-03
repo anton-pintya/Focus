@@ -11,7 +11,12 @@ CameraHandler::CameraHandler(cv::FileNode config)
     config["device"] >> device_number;
     config["fps"] >> fps;
 
-    camera.open(device_number);
+    bool res = camera.open(device_number);
+
+    if (!res) {
+        VINS_ERROR("Failed to open camera /dev/video%i", device_number);
+        std::exit(EXIT_FAILURE);
+    }
 }
 
 

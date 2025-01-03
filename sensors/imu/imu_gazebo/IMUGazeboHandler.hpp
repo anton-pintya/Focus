@@ -34,10 +34,13 @@ namespace sensors {
         IMUGazeboHandler(cv::FileNode config);
 
 
+        ~IMUGazeboHandler() override;
+
+
         void read() override;
 
 
-//        void print_info() override;
+        void print_info() override;
 
     protected:
         /*********Protected fields*********/
@@ -48,12 +51,20 @@ namespace sensors {
 
     private:
         /*********Private fields*********/
+        cv::FileNode _params;
+
+        std::string _connection_type;
+        std::string _host;
+        int _port;
+
         struct sockaddr_in _addr;
         int _sock;
         uint8_t _buf[2048]{0};
 
         /*********Private methods*********/
+        bool _setup_udp_connection();
 
+        bool _setup_tcp_connection();
 
     };
 

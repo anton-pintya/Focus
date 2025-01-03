@@ -3,7 +3,7 @@
 
 
 general:
-  source: "camera"
+  source: "stream"
 
 dataset:  # Dataset name from the DATASETS list
   name: "kitti"

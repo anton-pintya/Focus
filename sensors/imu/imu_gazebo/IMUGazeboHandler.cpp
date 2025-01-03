@@ -5,28 +5,98 @@
 #include "IMUGazeboHandler.hpp"
 #include "libraries/mavlink/common/mavlink.h"
 #include "utils/print_info.hpp"
+#include <cstdlib>
+
 
 using namespace vins::sensors;
 
-IMUGazeboHandler::IMUGazeboHandler(cv::FileNode config) {
+IMUGazeboHandler::IMUGazeboHandler(cv::FileNode config) : _params(config) {
+
+    config["type"] >> _connection_type;
+    config["host"] >> _host;
+    config["port"] >> _port;
+
+    bool res = (_connection_type == "udp") ? _setup_udp_connection() : _setup_tcp_connection();
+
+    if (!res) {
+        std::exit(EXIT_FAILURE);
+    }
+
     _load_calibration(config["calibration"]);
+}
+
+
+IMUGazeboHandler::~IMUGazeboHandler() {
+    close(_sock);
+}
+
+
+bool IMUGazeboHandler::_setup_udp_connection() {
 
     _addr.sin_family = AF_INET;
-    _addr.sin_port = htons(19856); // Используйте другой порт
-    _addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    _addr.sin_port = htons(_port);
+    _addr.sin_addr.s_addr = inet_addr(_host.c_str());
     _sock = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (_sock < 0) {
-        vins_utils::VINS_ERROR("Failed to create UDP socket: %s", strerror(errno));
-        return;
+        vins_utils::VINS_ERROR("Failed to create UDP socket (%s:%i): %s", _host.c_str(), _port, strerror(errno));
+        return false;
     }
 
-    if (bind(_sock, (struct sockaddr*)&_addr, sizeof(_addr)) < 0) {
-        vins_utils::VINS_ERROR("Failed to bind UDP socket: %s", strerror(errno));
+    // Set the timeout for the connect function
+    struct timeval timeout;
+    timeout.tv_sec = 5; // Timeout in seconds
+    timeout.tv_usec = 0; // Timeout in microseconds
+
+    if (setsockopt(_sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout)) < 0) {
+        vins_utils::VINS_ERROR("Failed to set socket timeout options: %s", strerror(errno));
         close(_sock);
-        return;
+        return false;
     }
+
+    uint8_t try_to_bind = bind(_sock, (struct sockaddr*)&_addr, sizeof(_addr));
+    if (try_to_bind < 0) {
+        vins_utils::VINS_ERROR("Failed to bind UDP socket (%s:%i): %s", _host.c_str(), _port, strerror(errno));
+        close(_sock);
+        return false;
+    }
+
+    return true;
 }
+
+
+bool IMUGazeboHandler::_setup_tcp_connection() {
+    _addr.sin_family = AF_INET;
+    _addr.sin_port = htons(_port);
+    _addr.sin_addr.s_addr = inet_addr(_host.c_str());
+    _sock = socket(AF_INET, SOCK_STREAM, 0);
+
+    if (_sock < 0) {
+        vins_utils::VINS_ERROR("Failed to create TCP socket (%s:%i): %s", _host.c_str(), _port, strerror(errno));
+        return false;
+    }
+
+    // Set the timeout for the connect function
+    struct timeval timeout;
+    timeout.tv_sec = 5; // Timeout in seconds
+    timeout.tv_usec = 0; // Timeout in microseconds
+
+    if (setsockopt(_sock, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout)) < 0) {
+        vins_utils::VINS_ERROR("Failed to set socket timeout options: %s", strerror(errno));
+        close(_sock);
+        return false;
+    }
+
+    if (connect(_sock, (struct sockaddr*)&_addr, sizeof(_addr)) < 0) {
+        vins_utils::VINS_ERROR("Failed to connect to TCP server (%s:%i): %s", _host.c_str(), _port, strerror(errno));
+        close(_sock);
+        return false;
+    }
+
+    return true;
+}
+
+
 
 void IMUGazeboHandler::read() {
     struct sockaddr_in src_addr;
@@ -56,15 +126,32 @@ void IMUGazeboHandler::read() {
 
                     publish();
 
-                } else {
-                    vins_utils::VINS_ERROR("Received unknown message with id %d", msg.msgid);
                 }
             }
         }
-    } else {
-        vins_utils::VINS_ERROR("Failed to receive data from UDP socket: %s", strerror(errno));
     }
+//    else {
+//        vins_utils::VINS_ERROR("Failed to receive data from %S socket: %s", _connection_type.c_str(), strerror(errno));
+//    }
 
     memset(_buf, 0, sizeof(_buf));
 }
 
+
+void IMUGazeboHandler::print_info() {
+    InertialSource::print_info();
+
+    vins_utils::VINS_INFO("IMU Gazebo Handler");
+    vins_utils::VINS_INFO("Connection type: %s", _connection_type.c_str());
+    vins_utils::VINS_INFO("Host: %s", _host.c_str());
+    vins_utils::VINS_INFO("Port: %i", _port);
+//    vins_utils::VINS_INFO("Calibration:");
+//    vins_utils::VINS_INFO("Accel:");
+//    vins_utils::VINS_INFO("x: %f", _acc_data.x);
+//    vins_utils::VINS_INFO("y: %f", _acc_data.y);
+//    vins_utils::VINS_INFO("z: %f", _acc_data.z);
+//    vins_utils::VINS_INFO("Gyro:");
+//    vins_utils::VINS_INFO("x: %f", _gyro_data.x);
+//    vins_utils::VINS_INFO("y: %f", _gyro_data.y);
+//    vins_utils::VINS_INFO("z: %f", _gyro_data.z);
+}
