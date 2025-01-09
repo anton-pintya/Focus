@@ -7,7 +7,7 @@
 
 
 #include "core/transport/Node.hpp"
-#include "sensors/video/video.hpp"
+#include "sensors/real_sensors/video/video.hpp"
 
 
 namespace vins {

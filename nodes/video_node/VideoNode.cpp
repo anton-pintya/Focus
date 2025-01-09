@@ -3,7 +3,7 @@
 //
 
 #include "VideoNode.hpp"
-#include "sensors/video/basic_source/VideoSourceFactory.hpp"
+#include "sensors/real_sensors/video/basic_source/VideoSourceFactory.hpp"
 
 
 using namespace vins::nodes;

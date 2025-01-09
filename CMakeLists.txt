@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 set(PROJECT_NAME VINS-Focus)
 project(${PROJECT_NAME})
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-address-of-packed-member")
 
 find_package(OpenCV REQUIRED)

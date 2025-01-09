@@ -7,7 +7,7 @@
 
 
 #include "core/transport/Node.hpp"
-#include "sensors/imu/imu.hpp"
+#include "sensors/real_sensors/imu/imu.hpp"
 
 
 namespace vins {

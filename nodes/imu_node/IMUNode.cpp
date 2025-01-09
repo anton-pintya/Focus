@@ -3,7 +3,7 @@
 //
 
 #include "IMUNode.hpp"
-#include "sensors/imu/basic_source/InertialSourceFactory.hpp"
+#include "sensors/real_sensors/imu/basic_source/InertialSourceFactory.hpp"
 //#include <utility>
 
 
