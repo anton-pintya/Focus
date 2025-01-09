@@ -27,13 +27,20 @@ namespace vins_utils
         va_end(args);
 
         std::copy(prefix, prefix + std::strlen(prefix), buffer.data());
-        std::printf("%s\n", buffer.data());
+
+
+        if (prefix[0] == '\r') {
+            std::printf("%s", buffer.data());
+            std::fflush(stdout);
+        } else {
+            std::printf("%s\n", buffer.data());
+        }
     }
 
-    #define VINS_INFO(fmt, ...) PRINT("\033[0;34mINFO: \033[0m", fmt, ##__VA_ARGS__)
+    #define VINS_INFO(fmt, ...)  PRINT("\033[0;34mINFO: \033[0m", fmt, ##__VA_ARGS__)
     #define VINS_DEBUG(fmt, ...) PRINT("\033[0;33mDEBUG: \033[0m", fmt, ##__VA_ARGS__)
     #define VINS_ERROR(fmt, ...) PRINT("\033[0;31mERROR: \033[0m", fmt, ##__VA_ARGS__)
-
+    #define VINS_DATA(fmt, ...)  PRINT("\r\033[0;46mDATA: \033[0m", fmt, ##__VA_ARGS__)
 } // namespace utils
 
 

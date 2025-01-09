@@ -7,12 +7,18 @@
 
 #include "nodes/imu_node/IMUNode.hpp"
 #include "nodes/video_node/VideoNode.hpp"
+#include "nodes/integrator_node/IntegratorNode.hpp"
+
+//#include "sensors/feature_detector/detector/FeatureDetector.hpp"
 
 
 #define TIMEOUT 50
 
 
 int main(int argc, char** argv) {
+
+//    cv::FileStorage fs("./sensors/feature_detector/config/config.yaml", cv::FileStorage::READ);
+//    auto detector = vins::sensors::FeatureDetector(fs);
 
     vins::nodes::IMUNode imu_node("imu", "./sensors/imu/config/config.yaml");
 
@@ -30,13 +36,18 @@ int main(int argc, char** argv) {
 
     auto start = std::chrono::steady_clock::now();
 
+//    vins::nodes::IntegratorNode integrator_node("integrator");
+//
+//    integrator_node.init();
+//    integrator_node.start();
+
 //    while (std::chrono::steady_clock::now() - start < std::chrono::seconds(TIMEOUT)) {
     while (true) {
-        sensor_accel accel = sub_accel.receive();
-        vins_utils::VINS_INFO("Accel: %f %f %f", accel.x, accel.y, accel.z);
+//        sensor_accel accel = sub_accel.receive();
+//        vins_utils::VINS_INFO("Accel: %f %f %f", accel.x, accel.y, accel.z);
 
-        sensor_gyro gyro = sub_gyro.receive();
-        vins_utils::VINS_INFO("Gyro: %f %f %f", gyro.x, gyro.y, gyro.z);
+//        sensor_gyro gyro = sub_gyro.receive();
+//        vins_utils::VINS_INFO("Gyro: %f %f %f", gyro.x, gyro.y, gyro.z);
 
         sensor_image_gray img = sub_img.receive();
 
