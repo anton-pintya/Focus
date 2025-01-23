@@ -22,6 +22,8 @@ namespace nodes {
         /*********Public methods*********/
         VideoNode(const std::string &name, std::string config_path);
 
+        VideoNode(const std::string &name, const cv::FileStorage& config);
+
         void init() override;
 
     protected:
@@ -34,7 +36,7 @@ namespace nodes {
 
     private:
         /*********Private fields*********/
-        std::unique_ptr<sensors::VideoSource> _imu_source;
+        std::unique_ptr<sensors::VideoSource> _video_source;
 
         /*********Private methods*********/
 

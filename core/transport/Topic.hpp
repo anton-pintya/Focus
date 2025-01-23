@@ -20,6 +20,7 @@
 #include <sys/shm.h>
 #include <sys/ipc.h>
 #include <cxxabi.h>
+#include <vector>
 
 
 // Templated class for topic registration
@@ -31,12 +32,12 @@ struct TopicRegistry : std::false_type {  }; // По умолчанию стру
 #define DECLARE(n)  #n
 
 
-#define TIMESTAMP
-
-
 namespace vins {
 namespace core {
 namespace transport {
+
+    template <typename T>
+    class Subscriber;
 
     template <typename T>
     class Topic {
@@ -46,7 +47,6 @@ namespace transport {
 
 
         /*********Public methods*********/
-
         explicit Topic() {
             // Structure must be registered
             static_assert(TopicRegistry<T>::value, "The specified topic is not registered");
@@ -81,20 +81,29 @@ namespace transport {
             shm_unlink(_topic_name.c_str());
         }
 
+        static Topic<T>& get_instance() {
+            static Topic<T> instance;
+            return instance;
+        }
+
+        void subscribe(Subscriber<T>* subs) {
+            _subscribers.push_back(subs);
+        }
+
         /**
          * @brief Pushes a message to the topic in the shared memory
          * @param message
          */
         void post(T& message) {
+            std::lock_guard<std::mutex> lock(_mutex);
             message.timestamp = get_timestamp();
-
-            {
-                std::lock_guard<std::mutex> lock(_mutex);
-                memcpy(_shared_memory, &message, sizeof(message));
-            }
-
+            memcpy(_shared_memory, &message, sizeof(message));
             _updated = true;
             _var.notify_all();
+
+            for (auto& sub : _subscribers) {
+                sub->update();
+            }
         }
 
 
@@ -106,8 +115,7 @@ namespace transport {
             std::unique_lock<std::mutex> lock(_mutex);
 //            _var.wait(lock, [this] { return _updated; });
             _updated = false;
-            T message = *static_cast<T*>(_shared_memory);
-            return message;
+            return *static_cast<T *>(_shared_memory);
         }
 
     protected:
@@ -128,6 +136,7 @@ namespace transport {
 
         // Updated flag
         bool _updated;
+        std::vector<Subscriber<T>*> _subscribers;
 
         /*********Private methods*********/
 

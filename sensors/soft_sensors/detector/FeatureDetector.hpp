@@ -24,10 +24,23 @@ public:
 
 
     /*********Public methods*********/
+    FeatureDetector();
+
+    FeatureDetector(const cv::FileStorage& config);
 
     FeatureDetector(const cv::FileStorage& config, std::shared_ptr<vins::core::Map> map);
 
     virtual ~FeatureDetector();
+
+    void add_map(std::shared_ptr<vins::core::Map> map);
+
+    void add_config(const cv::FileStorage& config);
+
+    void detect(cv::Mat image, const cv::Mat& mask=cv::Mat());
+
+    void detect(cv::Mat image, std::vector<cv::KeyPoint>& keypoints);
+
+    void detect(vins::core::KeyFrame* keyframe, cv::Mat image, const cv::Mat& mask=cv::Mat());
 
 protected:
     /*********Protected fields*********/
@@ -46,7 +59,6 @@ private:
 
     /*********Private methods*********/
     void _instantiate_detector();
-
 
 };
 

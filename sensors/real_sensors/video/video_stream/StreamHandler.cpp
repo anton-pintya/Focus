@@ -24,15 +24,22 @@ StreamHandler::StreamHandler(cv::FileNode config)
 }
 
 
-DataPackageBase StreamHandler::read()
-{
-    VideoPackage package;
-    video >> package.img;
-    package.timestamp = _get_time_since_first_call();
+//DataPackageBase StreamHandler::read()
+//{
+//    VideoPackage package;
+//    video >> package.img;
+//    package.timestamp = _get_time_since_first_call();
+//
+//    publish(package);
+//
+//    return package;
+//}
 
-    publish(package);
 
-    return package;
+void StreamHandler::read() {
+    cv::Mat image;
+    video >> image;
+    publish(image);
 }
 
 

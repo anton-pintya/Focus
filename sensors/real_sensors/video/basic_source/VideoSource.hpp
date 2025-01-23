@@ -7,6 +7,7 @@
 #include "core/core.hpp"
 #include "core/transport/msg_generated/sensor_image_gray.hpp"
 #include "core/transport/msg_generated/sensor_image_rgb.hpp"
+#include "core/transport/msg_generated/sensor_image.hpp"
 
 
 namespace vins {
@@ -16,7 +17,7 @@ namespace sensors {
     {
         public:
             /*********Public fields*********/
-
+            int image_type{0};
             
 
             /*********Public methods*********/
@@ -28,15 +29,12 @@ namespace sensors {
              * 
              * @return DataPackageBase 
              */
-            virtual DataPackageBase read() = 0;
+//            virtual DataPackageBase read() = 0;
+            virtual void read() = 0;
 
 
-            /**
-             * @brief Publish DataPackage for given video source
-             *
-             * @return
-             */
-            void publish(const DataPackageBase& pkg);
+            void publish(const cv::Mat& image);
+
 
             /**
              * @brief Return True if ground-truth data is available for given video source
@@ -70,7 +68,8 @@ namespace sensors {
             bool    has_gt{false};  // <- is ground-truth data available
             int     fps{30};        // <- FPS value for given source
 
-            vins::core::transport::Publisher<sensor_image_gray> image_pub;  // <- Grayscale mage publisher
+            vins::core::transport::Publisher<sensor_image_gray> gray_pub;  // <- Grayscale mage publisher
+            vins::core::transport::Publisher<sensor_image> img_pub;
 
 
             /*********Protected methods*********/

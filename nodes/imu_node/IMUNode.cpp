@@ -15,6 +15,11 @@ IMUNode::IMUNode(const std::string &name, std::string config_path): Node(name) {
 };
 
 
+IMUNode::IMUNode(const std::string &name, const cv::FileStorage &config): Node(name) {
+    _imu_source = vins::sensors::InertialSourceFactory::createInertialSource(config);
+};
+
+
 void IMUNode::init() {
     _imu_source->print_info();
 }

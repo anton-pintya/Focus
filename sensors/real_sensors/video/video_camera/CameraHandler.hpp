@@ -22,8 +22,8 @@ namespace sensors {
          *
          * @return DataPackageBase
          */
-        DataPackageBase read() override;
-
+//        DataPackageBase read() override;
+        void read() override;
 
         /**
          * @brief Print out in the terminal info about current video

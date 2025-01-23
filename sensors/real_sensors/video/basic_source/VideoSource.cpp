@@ -13,17 +13,24 @@ using namespace vins::sensors;
 using namespace vins_utils;
 
 
-void VideoSource::publish(const DataPackageBase& pkg) {
-    sensor_image_gray msg;
-    msg.width = pkg.img.cols;
-    msg.height = pkg.img.rows;
-//    msg_generated.channels = pkg.img.channels();
+void VideoSource::publish(const cv::Mat &image) {
+    sensor_image msg;
+    msg.width = image.cols;
+    msg.height = image.rows;
+    msg.channels = image.channels();
 
-    cv::Mat empty;
-    cv::cvtColor(pkg.img, empty, cv::COLOR_BGR2GRAY);
-    memcpy(msg.data, empty.data, empty.size().width * empty.size().height);
+    image_type = image.type();
+    if (image_type == CV_8UC1) {
+        memcpy(msg.r, image.data, image.size().width * image.size().height);
+    } else if (image_type == CV_8UC3) {
+        cv::Mat bgr[3];
+        cv::split(image, bgr);
 
-    image_pub.publish(msg);
+        memcpy(msg.r, bgr[0].data, bgr[0].size().width * bgr[0].size().height);
+        memcpy(msg.g, bgr[1].data, bgr[1].size().width * bgr[1].size().height);
+        memcpy(msg.b, bgr[2].data, bgr[2].size().width * bgr[2].size().height);
+    }
+    img_pub.publish(msg);
 }
 
 

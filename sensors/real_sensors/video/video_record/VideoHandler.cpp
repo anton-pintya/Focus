@@ -12,7 +12,8 @@ VideoHandler::VideoHandler(cv::FileNode config)
     config["video"] >> video_file;
     config["fps"] >> fps;
 
-    std::string video_path = video_folder + "/sequences/" + video_file;
+//    std::string video_path = video_folder + "/sequences/" + video_file;
+    std::string video_path = video_folder + "/" + video_file;
     std::string calib_path = video_folder + "/calibration/" + video_file.substr(0, video_file.size() - 3) + "yaml";
     std::string poses_path = video_folder + "/poses/" + video_file.substr(0, video_file.size() - 3) + "txt";
 
@@ -28,15 +29,10 @@ VideoHandler::VideoHandler(cv::FileNode config)
 }
 
 
-DataPackageBase VideoHandler::read()
-{
-    VideoPackage package;
-    video >> package.img;
-    package.timestamp = _get_time_since_first_call();
-
-    publish(package);
-
-    return package;
+void VideoHandler::read() {
+    cv::Mat image;
+    video >> image;
+    publish(image);
 }
 
 

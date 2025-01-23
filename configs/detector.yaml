@@ -4,36 +4,37 @@
 
 general:
   detector_type: "ORB"
+#  detector_type: "FAST"
+#  detector_type: "AKAZE"
+#  detector_type: "KAZE"
+#  detector_type: "BRISK"
+#  detector_type: "SIFT"
+
 
 ORB:
-  nfeatures: 500
+  nfeatures: 1000
   scaleFactor: 1.2
-  nlevels: 8
+  nlevels: 13
   edgeThreshold: 31
   firstLevel: 0
   WTA_K: 2
-  scoreType: "HARRIS_SCORE"
+  scoreType: "FAST_SCORE"
   patchSize: 31
-  fastThreshold: 20
+  fastThreshold: 5
 
 FAST:
-  threshold: 10
+  threshold: 25
   nonmaxSuppression: true
-  type: "TYPE_9_16"
+#  type: "TYPE_9_16"
 
 AKAZE:
-  descriptor_type: "DESCRIPTOR_MLDB"
+#  descriptor_type: "DESCRIPTOR_MLDB"
   descriptor_size: 0
   descriptor_channels: 3
-  threshold: 0.001
+  threshold: 0.0001
   nOctaves: 4
   nOctaveLayers: 4
-  diffusivity: "DIFF_PM_G2"
-
-BRISK:
-  threshold: 20
-  max_features: 1000
-  octaves: 3
+#  diffusivity: "DIFF_PM_G2"
 
 KAZE:
   extended: false
@@ -43,10 +44,15 @@ KAZE:
   nOctaveLayers: 4
   diffusivity: 1
 
+BRISK:
+  threshold: 20
+  max_features: 500
+  octaves: 3
+
 SIFT:
-  nfeatures: 0
+  nfeatures: 500
   nOctaveLayers: 3
-  contrastThreshold: 0.04
+  contrastThreshold: 0.004
   edgeThreshold: 10
   sigma: 1.6
 

@@ -47,4 +47,4 @@ target_include_directories(
 )
 
 # Связываем с библиотекой utils
-target_link_libraries(sensors PUBLIC utils)
+target_link_libraries(sensors PUBLIC utils core)

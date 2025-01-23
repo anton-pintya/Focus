@@ -4,6 +4,8 @@
 
 general:
   source: "gazebo"
+  source: "file"
+  source: "sensor"
 
 
 gazebo:

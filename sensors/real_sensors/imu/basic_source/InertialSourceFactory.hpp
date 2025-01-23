@@ -20,60 +20,66 @@
 namespace vins {
 namespace sensors {
 
-    using namespace vins_utils;
+using namespace vins_utils;
 
-    class InertialSourceFactory {
-        public:
-            /*********Public fields*********/
-            static std::unique_ptr<InertialSource> createInertialSource(const std::string config_path) {
-
-                cv::FileStorage fs(config_path, cv::FileStorage::READ);
-
-                if (!fs.isOpened()) {
-                    VINS_ERROR("Unable to open config file %s", config_path.c_str());
-                    return nullptr;
-                }
-
-                std::string source;
-                fs["general"]["source"] >> source;
-
-                cv::FileNode node = fs[source];
-
-                if (source == "sensor") {
-                    return std::unique_ptr<InertialSource>(
-                            nullptr
-                    );
-                } else if (source == "gazebo") {
-                    return std::unique_ptr<InertialSource>(
-                            new IMUGazeboHandler(node)
-                    );
-                } else {
-                    VINS_ERROR("Unknown IMU source: %s", source.c_str());
-                }
-
-                fs.release();
-
-                return nullptr;
-            }
+class InertialSourceFactory {
+public:
+    /*********Public fields*********/
 
 
-            /*********Public methods*********/
+    /*********Public methods*********/
+    static std::unique_ptr<InertialSource> createInertialSource(const std::string config_path) {
+
+        cv::FileStorage fs(config_path, cv::FileStorage::READ);
+
+        if (!fs.isOpened()) {
+            VINS_ERROR("Unable to open config file %s", config_path.c_str());
+            return nullptr;
+        }
+
+        std::unique_ptr<InertialSource> source = createInertialSource(fs);
+
+        fs.release();
+
+        return source;
+    }
+
+    static std::unique_ptr<InertialSource> createInertialSource(const cv::FileStorage& config) {
+
+        std::string source;
+        config["general"]["source"] >> source;
+
+        cv::FileNode node = config[source];
+
+        if (source == "sensor") {
+            return std::unique_ptr<InertialSource>(nullptr);
+        } else if (source == "file") {
+            return std::unique_ptr<InertialSource>(nullptr);
+        } else if (source == "gazebo") {
+            return std::unique_ptr<InertialSource>(
+                    new IMUGazeboHandler(node)
+            );
+        } else {
+            VINS_ERROR("Unknown IMU source: %s", source.c_str());
+        }
+
+        return nullptr;
+    }
+
+protected:
+    /*********Protected fields*********/
 
 
-        protected:
-            /*********Protected fields*********/
+    /*********Protected methods*********/
 
 
-            /*********Protected methods*********/
+private:
+    /*********Private fields*********/
 
 
-        private:
-            /*********Private fields*********/
+    /*********Private methods*********/
 
-
-            /*********Private methods*********/
-
-    };
+};
 
 }; // namespace sensors
 }; // namespace vins

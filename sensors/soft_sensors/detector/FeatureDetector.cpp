@@ -11,15 +11,58 @@
 using namespace vins::sensors;
 
 
-FeatureDetector::FeatureDetector(const cv::FileStorage& config, std::shared_ptr<vins::core::Map> map) {
-    _config = config;
-    _map = std::move(map);
+FeatureDetector::FeatureDetector() = default;
 
+
+FeatureDetector::FeatureDetector(const cv::FileStorage& config):
+    _config(config)
+{
+    _instantiate_detector();
+}
+
+
+FeatureDetector::FeatureDetector(const cv::FileStorage &config, std::shared_ptr<vins::core::Map> map):
+    _config(config), _map(map)
+{
     _instantiate_detector();
 }
 
 
 FeatureDetector::~FeatureDetector() = default;
+
+
+void FeatureDetector::add_map(std::shared_ptr<vins::core::Map> map) {
+    _map = std::move(map);
+}
+
+
+void FeatureDetector::add_config(const cv::FileStorage &config) {
+    _config = config;
+    _instantiate_detector();
+}
+
+
+void FeatureDetector::detect(cv::Mat image, const cv::Mat& mask) {
+
+    vins::core::KeyFrame* keyframe = new vins::core::KeyFrame(_map->get_latest_keyframe());
+    _detector->detect(image, keyframe->keypoints);
+
+    if (keyframe->keypoints.size() == 0) {
+        return;
+    }
+
+    _map->add_keyframe(keyframe);
+}
+
+
+void FeatureDetector::detect(cv::Mat image, std::vector<cv::KeyPoint>& keypoints) {
+    _detector->detect(image, keypoints);
+}
+
+
+void FeatureDetector::detect(vins::core::KeyFrame* keyframe, cv::Mat image, const cv::Mat& mask) {
+    _detector->detect(image, keyframe->keypoints);
+}
 
 
 void FeatureDetector::_instantiate_detector() {
@@ -47,5 +90,4 @@ void FeatureDetector::_instantiate_detector() {
     } else {
         throw std::runtime_error("Detector config is empty for detector type: " + detector_type);
     }
-
 }

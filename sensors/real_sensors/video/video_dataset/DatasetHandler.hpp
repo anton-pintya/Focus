@@ -38,8 +38,9 @@ namespace vins {
              * 
              * @return DataPackageBase 
              */
-            DataPackageBase read() override;
+//            DataPackageBase read() override;
 
+            void read() override;
 
             /**
              * @brief Get the packed object for dataset's item

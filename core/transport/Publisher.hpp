@@ -29,10 +29,10 @@ namespace transport {
 
 
             /*********Public methods*********/
-            explicit Publisher() = default;
+            explicit Publisher() : _topic(&Topic<T>::get_instance()) {};
 
             void publish(T& data) {
-                _topic.post(data);
+                _topic->post(data);
             }
 
 
@@ -45,10 +45,10 @@ namespace transport {
 
         private:
             /*********Private fields*********/
-            Topic<T> _topic;
+            Topic<T>* _topic;
 
 
-            /*********Private methods*********/
+        /*********Private methods*********/
 
     };
 }; // namespace transport

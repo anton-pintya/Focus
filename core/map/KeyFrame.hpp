@@ -13,18 +13,22 @@ namespace vins {
 namespace core {
 
 class KeyFrame {
+    uint64_t counter = 0;
+
 public:
     /*********Public fields*********/
-    uint64_t id;
+    uint64_t id{0};
     cv::Mat4d pose;
     std::vector<cv::KeyPoint> keypoints;
-//    std::vector<vins::core::Landmark*> observed_landmarks;
-
     std::vector<uint64_t> observed_landmarks;
 
-    cv::Mat image;
 
     /*********Public methods*********/
+    KeyFrame(KeyFrame* previous) : _previous(previous) { id = count(); }
+
+    KeyFrame* get_previous() { return _previous; }
+
+    ~KeyFrame() { --count(); }
 
 
 protected:
@@ -39,8 +43,10 @@ private:
     cv::Mat4d _imu_pose;
     cv::Mat4d _camera_pose;
 
-    /*********Private methods*********/
+    KeyFrame* _previous{nullptr};
 
+    /*********Private methods*********/
+    static uint64_t& count() { static uint64_t counter = 0; counter++; return counter; }
 
 };
 

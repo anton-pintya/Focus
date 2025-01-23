@@ -20,15 +20,22 @@ CameraHandler::CameraHandler(cv::FileNode config)
 }
 
 
-DataPackageBase CameraHandler::read()
-{
-    CameraPackage package;
-    camera >> package.img;
-    package.timestamp = _get_time_since_first_call();
+//DataPackageBase CameraHandler::read()
+//{
+//    CameraPackage package;
+//    camera >> package.img;
+//    package.timestamp = _get_time_since_first_call();
+//
+//    publish(package);
+//
+//    return package;
+//}
 
-    publish(package);
 
-    return package;
+void CameraHandler::read() {
+    cv::Mat image;
+    camera >> image;
+    publish(image);
 }
 
 

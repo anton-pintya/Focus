@@ -22,6 +22,8 @@ public:
     /*********Public methods*********/
     IMUNode(const std::string &name, std::string config_path);
 
+    IMUNode(const std::string &name, const cv::FileStorage& config);
+
     void init() override;
 
 protected:

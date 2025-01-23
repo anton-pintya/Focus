@@ -1,0 +1,13 @@
+%YAML 1.2
+---
+
+
+
+win_size: [31, 31]          # Size of the search window at each pyramid level
+max_level: 3                # 0-based maximal pyramid level number
+criteria:
+  type: 3                  # Type of the termination criteria: COUNT (1), EPS (2), or both (3)
+  max_count: 1000             # Maximum number of iterations
+  epsilon: 0.001            # Required accuracy
+flags: 0                   # Operation flags (0 or OPTFLOW_USE_INITIAL_FLOW)
+min_eig_threshold: 1e-4      # Minimum eigenvalue threshold

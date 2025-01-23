@@ -33,15 +33,26 @@ DatasetHandler::DatasetHandler(cv::FileNode config)
 }
 
 
-DataPackageBase DatasetHandler::read()
-{
+//DataPackageBase DatasetHandler::read()
+//{
+//    static int counter = 0;
+//    DatasetPackage package = get_pack(counter);
+//    counter++;
+//
+//    publish(package);
+//
+//    return package;
+//}
+
+
+void DatasetHandler::read() {
+    cv::Mat image;
+
     static int counter = 0;
     DatasetPackage package = get_pack(counter);
     counter++;
 
-    publish(package);
-
-    return package;
+    publish(package.img);
 }
 
 

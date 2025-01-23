@@ -24,16 +24,29 @@ namespace transport {
 
     template<typename T>
     class Subscriber {
+
         public:
             /*********Public fields*********/
 
 
             /*********Public methods*********/
-            explicit Subscriber() = default;
+            explicit Subscriber() : _topic(&Topic<T>::get_instance()) {};
+
+            void subscribe() {
+                if (_topic == nullptr) {
+                    throw std::runtime_error("Topic is not initialized");
+                }
+                _topic->subscribe(this);
+            }
+
+            void update() {
+                _updated = true;
+            }
 
             T receive() {
-                T data = _topic.get();
-                return data;
+                while (!_updated) {}
+                _updated = false;
+                return _topic->get();
             }
 
 
@@ -46,9 +59,11 @@ namespace transport {
 
         private:
             /*********Private fields*********/
-            Topic<T> _topic;
+            Topic<T>* _topic;
+            bool _updated{false};
 
             /*********Private methods*********/
+
 
     };
 }; // namespace transport

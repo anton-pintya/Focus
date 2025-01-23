@@ -41,6 +41,12 @@ public:
 
     Landmark* get_landmark(uint64_t landmark_id);
 
+    KeyFrame* get_latest_keyframe();
+
+    Landmark* get_latest_landmark();
+
+    KeyFrame* wait_untill_update();
+
 
 protected:
     /*********Protected fields*********/
@@ -54,6 +60,11 @@ private:
 //    mutable std::shared_mutex _mutex;
     std::mutex _read_mutex;
     std::mutex _write_mutex;
+
+    uint64_t _latest_keyframe_id{UINT64_MAX};
+    uint64_t _latest_landmark_id{UINT64_MAX};
+
+    bool _new_added = false;
 
     /*********Private methods*********/
 

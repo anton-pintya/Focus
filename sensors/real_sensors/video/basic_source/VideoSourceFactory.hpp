@@ -18,56 +18,70 @@
 namespace vins {
 namespace sensors {
 
-        using namespace vins_utils;
+using namespace vins_utils;
 
-        class VideoSourceFactory {
-        public:
-            static std::unique_ptr<VideoSource> createVideoSource(const std::string config_path) {
-                cv::FileStorage fs(config_path, cv::FileStorage::READ);
+class VideoSourceFactory {
+public:
+    static std::unique_ptr<VideoSource> createVideoSource(const std::string config_path) {
+        cv::FileStorage fs(config_path, cv::FileStorage::READ);
 
-                if (!fs.isOpened()) {
-                    VINS_ERROR("Unable to open config file %s", config_path.c_str());
-                    return nullptr;
-                }
+        if (!fs.isOpened()) {
+            VINS_ERROR("Unable to open config file %s", config_path.c_str());
+            return nullptr;
+        }
 
-                std::string video_source;
-                fs["general"]["source"] >> video_source;
+        std::unique_ptr<VideoSource> source = createVideoSource(fs);
 
-                cv::FileNode node = fs[video_source];
+        fs.release();
 
-                if (video_source == "dataset") {
-                    return std::unique_ptr<VideoSource>(
-                            new DatasetHandler(node)
-                    );
-                } else if (video_source == "video") {
-                    return std::unique_ptr<VideoSource>(
-                            new VideoHandler(node)
-                    );
-                } else if (video_source == "camera") {
-                    return std::unique_ptr<VideoSource>(
-                            new CameraHandler(node)
-                    );
-                } else if (video_source == "stream") {
-                    return std::unique_ptr<VideoSource>(
-                            new StreamHandler(node)
-                    );
-                } else {
-                    VINS_ERROR("Unknown video source: %s", video_source.c_str());
-                }
+        return source;
+    }
 
-                fs.release();
+    static std::unique_ptr<VideoSource> createVideoSource(const cv::FileStorage& config) {
+        std::string source;
+        config["general"]["source"] >> source;
 
-                return nullptr;
-            }
+        cv::FileNode node = config[source];
 
-        protected:
+        if (source == "camera") {
+            return std::unique_ptr<VideoSource>(
+                    new CameraHandler(node)
+            );
+        } else if (source == "dataset") {
+            return std::unique_ptr<VideoSource>(
+                    new DatasetHandler(node)
+            );
+        } else if (source == "record") {
+            return std::unique_ptr<VideoSource>(
+                    new VideoHandler(node)
+            );
+        } else if (source == "stream") {
+            return std::unique_ptr<VideoSource>(
+                    new StreamHandler(node)
+            );
+        } else {
+            VINS_ERROR("Unknown video source %s", source.c_str());
+            return nullptr;
+        }
+    }
+
+protected:
+    /*********Protected fields*********/
 
 
-        private:
+    /*********Protected methods*********/
 
 
-        };
-    }; // namespace sensors
+private:
+    /*********Private fields*********/
+
+
+    /*********Private methods*********/
+
+};
+
+
+}; // namespace sensors
 }; // namespace vins
 
 
